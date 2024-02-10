@@ -15,4 +15,7 @@ public class StudentRegistrationService {
         Student student = studentDAO.getStudent(rollNumber);
         return student;
     }
+    public void registerStudent(int rollNumber , String name){
+        studentDAO.saveStudent(rollNumber,name) ;
+    }
 }
