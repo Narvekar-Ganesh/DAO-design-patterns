@@ -1,4 +1,4 @@
-package home.pratice.user;
+package home.pratice.domain;
 
 public class User {
     private int userId;

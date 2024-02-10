@@ -1,7 +1,7 @@
 package home.pratice.dao.implimentation;
 
 import home.pratice.design.pattern.dao.StudentDAO;
-import home.pratice.user.Student;
+import home.pratice.domain.Student;
 
 public class StudentWithDefaulValuesDAOImpl implements StudentDAO {
     public Student getStudent(int rollNumber) {

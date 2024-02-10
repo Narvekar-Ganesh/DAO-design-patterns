@@ -1,7 +1,7 @@
 package home.pratice.regitration.service.controller;
 
 import home.pratice.service.StudentRegistrationService;
-import home.pratice.user.Student;
+import home.pratice.domain.Student;
 
 public class StudentRegistrationController {
     private StudentRegistrationService studentRegistrationService;//has-a relationship

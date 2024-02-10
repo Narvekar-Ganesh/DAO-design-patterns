@@ -1,7 +1,7 @@
 package home.pratice.regitration.service.controller;
 
 import home.pratice.service.UserRegistrationService;
-import home.pratice.user.User;
+import home.pratice.domain.User;
 
 public class UserRegistrationController {
     UserRegistrationService userRegistrationService;

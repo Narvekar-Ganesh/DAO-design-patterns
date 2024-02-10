@@ -1,7 +1,7 @@
 package home.pratice.dao.implimentation;
 
 import home.pratice.design.pattern.dao.UserDAO;
-import home.pratice.user.User;
+import home.pratice.domain.User;
 
 public class UserWithPostGresDAOImpl implements UserDAO {
     @Override

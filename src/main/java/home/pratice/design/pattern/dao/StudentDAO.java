@@ -1,6 +1,6 @@
 package home.pratice.design.pattern.dao;
 
-import home.pratice.user.Student;
+import home.pratice.domain.Student;
 
 public interface StudentDAO {
     Student getStudent(int rollNumber);

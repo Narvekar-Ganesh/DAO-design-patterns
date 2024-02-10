@@ -2,8 +2,7 @@ package home.pratice.service;
 
 import home.pratice.dao.implimentation.UserWithPostGresDAOImpl;
 import home.pratice.design.pattern.dao.UserDAO;
-import home.pratice.regitration.service.controller.UserRegistrationController;
-import home.pratice.user.User;
+import home.pratice.domain.User;
 
 public class UserRegistrationService {
     private UserDAO userDAO;

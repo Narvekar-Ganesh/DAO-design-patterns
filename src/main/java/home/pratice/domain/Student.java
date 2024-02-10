@@ -1,4 +1,4 @@
-package home.pratice.user;
+package home.pratice.domain;
 
 public class Student {
     private int rollNumber;
