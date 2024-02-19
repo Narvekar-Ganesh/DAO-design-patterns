@@ -1,5 +1,6 @@
 package home.pratice.design.pattern.dao;
 
 public interface BookDAO {
-    void getBook();
+    void getBook(int bookId);
+    void saveBook(int bookId ,String bookName);
 }

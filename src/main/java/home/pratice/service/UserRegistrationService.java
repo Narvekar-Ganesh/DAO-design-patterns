@@ -15,4 +15,8 @@ public class UserRegistrationService {
      }
 
 
+     public void  registerUser(int userId, String userName){
+         userDAO.saveUser(userId,userName);
+
+     }
 }
