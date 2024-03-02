@@ -22,7 +22,7 @@ public class BookWithPoseGresDAOImpl implements BookDAO {
         session.beginTransaction();
         session.save(book);
         session.getTransaction().commit();;
-        System.out.println("Student persisted succssefully");
+        System.out.println("Book persisted succssefully");
     }
 
 }

@@ -10,7 +10,7 @@ public class UserWithPostGresDAOImpl implements UserDAO {
     public User getUser(int userId) {
         User user =new User();
         user.setUserId(6869);
-        user.setUserName("Swapnil");
+        user.setUserName("Sonal");
         return user;
     }
 
@@ -25,7 +25,6 @@ public class UserWithPostGresDAOImpl implements UserDAO {
         session.save(user);
         session.getTransaction().commit();
         System.out.println("User is persisted successfully");
-
 
     }
 }

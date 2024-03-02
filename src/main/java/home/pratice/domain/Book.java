@@ -2,24 +2,26 @@ package home.pratice.domain;
 
 import javax.persistence.*;
 
+@Entity
 public class Book {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private long  bookNumber;
+    private long bookId;
 
     @Column
-    private  int bookId ;
+    private int bookNumber;
+
 
     @Column
-    private String  bookName;
+    private String bookName;
 
-    public long getBookNumber() {
-        return bookNumber;
+    public long getBookId() {
+        return bookId;
     }
 
-    public int getBookId() {
-        return bookId;
+    public int getBookNumber() {
+        return bookNumber;
     }
 
     public String getBookName() {
@@ -30,12 +32,17 @@ public class Book {
         this.bookId = bookId;
     }
 
-    public void setBookNumber(long bookNumber) {
-        this.bookNumber = bookNumber;
-    }
 
     public void setBookName(String bookName) {
         this.bookName = bookName;
+    }
+
+    public void setBookId(long bookId) {
+        this.bookId = bookId;
+    }
+
+    public void setBookNumber(int bookNumber) {
+        this.bookNumber = bookNumber;
     }
 
     @Override

@@ -3,7 +3,8 @@ package home.pratice.regitration.service.controller;
 import home.pratice.service.StudentRegistrationService;
 import home.pratice.domain.Student;
 
-public class StudentRegistrationController {
+public class
+StudentRegistrationController {
     private StudentRegistrationService studentRegistrationService;//has-a relationship
 
     public StudentRegistrationController(){
@@ -14,7 +15,7 @@ public class StudentRegistrationController {
         Student student = studentRegistrationService.getStudent(rollNumber);
         return student;
     }
-    public void registerStudent(int rollNumber,String name){
+    public void registerStudent(int rollNumber,String name  ){
         studentRegistrationService.registerStudent(rollNumber, name);
     }
 

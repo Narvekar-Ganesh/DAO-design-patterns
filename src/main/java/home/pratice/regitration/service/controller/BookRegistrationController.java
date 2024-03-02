@@ -11,29 +11,23 @@ public class BookRegistrationController {
         bookRegistrationService = new BookRegistrationService();
     }
 
-    public Book getDetailsOfBook(int bookId){
+    public Book getDetailsOfBook(int bookId) {
         Book book = bookRegistrationService.getBook(bookId);
         return book;
-        
-
-    public void registerBook(int bookId,String ){
-
-        }
-
-
+    }
+    public void registerBook(int bookId,String name){
+        bookRegistrationService.registerBook(bookId,name);
 
 
     }
     public static void main(String[] args){
         BookRegistrationController controller =new BookRegistrationController();
 
-        Book book = controller.getDetailsOfBook(789);
-        System.out.println("Details of Book"+book);
+//        Book book = controller.getDetailsOfBook(789);
+//        System.out.println("Details of Book"+book);
+
+        controller.registerBook(789,"Geeta");
 
 
     }
-
-
-
-
 }

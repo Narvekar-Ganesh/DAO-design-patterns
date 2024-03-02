@@ -23,6 +23,7 @@ public class UserRegistrationController {
 
     public static  void main (String [] args){
         UserRegistrationController controller = new UserRegistrationController();
+
         User user = controller.getDetailsOfUser(686);
         System .out.println("Details of Student"+user );
 

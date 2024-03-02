@@ -8,16 +8,18 @@ import home.pratice.domain.Book;
 public class BookRegistrationService {
     private BookDAO bookDAO;
 
-    public BookRegistrationService(){
-        bookDAO= new BookWithPoseGresDAOImpl();
+    public BookRegistrationService() {
+        bookDAO = new BookWithPoseGresDAOImpl();
 
     }
-    public Book getBook(int bookId ){
-        Book book = bookDAO.getBook(bookId);
-        return book;
+
+    public Book getBook(int bookId) {
+        bookDAO.getBook(bookId);
+        return null;//TODO
 
     }
-    public void registerBook(  int bookId, String name){
-        bookDAO.saveBook(bookId,name);
+
+    public void registerBook(int bookId, String name) {
+        bookDAO.saveBook(bookId, name);
     }
 }

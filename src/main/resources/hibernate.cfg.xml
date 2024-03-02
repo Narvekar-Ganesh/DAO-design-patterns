@@ -19,6 +19,8 @@
         <property name="hibernate.dbcp.maxWaitMillis">-1</property>
 
         <mapping class="home.pratice.domain.Student" />
+        <mapping class="home.pratice.domain.Book" />
+        <mapping class="home.pratice.domain.User" />
     </session-factory>
 
 
