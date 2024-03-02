@@ -24,7 +24,6 @@ public class StudentWithDefaulValuesDAOImpl implements StudentDAO {
         session.save(student);
         session.getTransaction().commit();
         System.out.println("student is persisted successfully");
-
     }
 
 }
