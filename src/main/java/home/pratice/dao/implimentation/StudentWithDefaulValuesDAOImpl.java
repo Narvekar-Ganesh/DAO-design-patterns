@@ -9,7 +9,7 @@ public class StudentWithDefaulValuesDAOImpl implements StudentDAO {
     public Student getStudent(int rollNumber) {
         Student student = new Student();
         student.setRollNumber(000);
-        student.setName("default-student");
+        student.setName("H2");
         return student;
 
     }

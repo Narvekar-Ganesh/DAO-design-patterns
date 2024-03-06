@@ -5,7 +5,7 @@ import home.pratice.domain.Student;
 import home.pratice.utillities.DatabaseHibernateUtility;
 import org.hibernate.Session;
 
-public class StudentWithPoseGresDAOImpl implements StudentDAO {
+public class StudentWithH2 implements StudentDAO {
     public Student getStudent(int rollNumber) {
         Student student = new Student();
         student.setRollNumber(000);

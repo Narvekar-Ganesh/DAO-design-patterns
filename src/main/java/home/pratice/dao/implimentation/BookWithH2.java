@@ -2,11 +2,10 @@ package home.pratice.dao.implimentation;
 
 import home.pratice.design.pattern.dao.BookDAO;
 import home.pratice.domain.Book;
-import home.pratice.domain.Student;
 import home.pratice.utillities.DatabaseHibernateUtility;
 import org.hibernate.Session;
 
-public class BookWithPoseGresDAOImpl implements BookDAO {
+public class BookWithH2 implements BookDAO {
     public Book getBook(int bookId){
          Book book =new Book();
          book.setBookId(789);
