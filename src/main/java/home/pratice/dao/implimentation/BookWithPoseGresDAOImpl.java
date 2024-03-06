@@ -2,15 +2,16 @@ package home.pratice.dao.implimentation;
 
 import home.pratice.design.pattern.dao.BookDAO;
 import home.pratice.domain.Book;
+import home.pratice.domain.Student;
 import home.pratice.utillities.DatabaseHibernateUtility;
 import org.hibernate.Session;
 
 public class BookWithPoseGresDAOImpl implements BookDAO {
     public Book getBook(int bookId){
-        Book book =new Book();
-        book.setBookNumber(789);
-        book.setBookName("PoseGressBook");
-        return book;
+         Book book =new Book();
+         book.setBookId(789);
+         book.setBookName("poseGresbook");
+         return book;
 
     }
     @Override

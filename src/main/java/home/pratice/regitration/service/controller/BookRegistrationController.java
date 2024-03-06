@@ -23,10 +23,11 @@ public class BookRegistrationController {
     public static void main(String[] args){
         BookRegistrationController controller =new BookRegistrationController();
 
-//        Book book = controller.getDetailsOfBook(789);
-//        System.out.println("Details of Book"+book);
+        Book book = controller.getDetailsOfBook(789);
+        System.out.println("Details of Book"+book);
 
         controller.registerBook(789,"Geeta");
+
 
 
     }

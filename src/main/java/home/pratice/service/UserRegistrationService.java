@@ -9,7 +9,7 @@ public class UserRegistrationService {
      public UserRegistrationService(){
          userDAO= new UserWithPostGresDAOImpl();
      }
-     public User getUser(int userId){
+     public User getUser(int  userId){
          User user = userDAO.getUser(userId);
          return user;
      }

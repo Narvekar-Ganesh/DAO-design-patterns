@@ -15,7 +15,7 @@ StudentRegistrationController {
         Student student = studentRegistrationService.getStudent(rollNumber);
         return student;
     }
-    public void registerStudent(int rollNumber,String name  ){
+    public void registerStudent(int rollNumber,String name){
         studentRegistrationService.registerStudent(rollNumber, name);
     }
 

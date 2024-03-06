@@ -21,6 +21,7 @@
         <mapping class="home.pratice.domain.Student" />
         <mapping class="home.pratice.domain.Book" />
         <mapping class="home.pratice.domain.User" />
+        <mapping class="home.pratice.domain.LibraryCard" />
     </session-factory>
 
 
