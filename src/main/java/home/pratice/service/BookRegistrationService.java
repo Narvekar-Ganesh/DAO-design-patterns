@@ -13,9 +13,9 @@ public class BookRegistrationService {
 
     }
 
-    public Book getBook(int bookId) {
+    public Book getBook(Long bookId) {
          Book book =bookDAO.getBook(bookId);
-        return book ;//TODO
+        return book ;
 
     }
 

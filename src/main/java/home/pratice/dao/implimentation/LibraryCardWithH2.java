@@ -7,9 +7,13 @@ import org.hibernate.Session;
 
 public class LibraryCardWithH2 implements LibraryCardDAO {
     public LibraryCard getLibraryCard(int cardNumber){
-        LibraryCard libraryCard=new LibraryCard();
-        libraryCard.setCardNumber(123);
-        libraryCard.getCardName();
+         LibraryCard libraryCard = new LibraryCard();
+         libraryCard.setCardNumber(123);
+         libraryCard.setCardName("H2");
+//        Session session = DatabaseHibernateUtility.getSessionFactory().openSession();
+//        session.beginTransaction();
+//        LibraryCard libraryCard=(LibraryCard) session.byId(LibraryCard.class).load((Long)cardNumber);
+//        session.getTransaction().commit();;
         return libraryCard;
 
     }

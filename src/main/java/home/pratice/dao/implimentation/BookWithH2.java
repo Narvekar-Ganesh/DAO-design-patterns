@@ -6,10 +6,11 @@ import home.pratice.utillities.DatabaseHibernateUtility;
 import org.hibernate.Session;
 
 public class BookWithH2 implements BookDAO {
-    public Book getBook(int bookId){
-         Book book =new Book();
-         book.setBookId(789);
-         book.setBookName("poseGresbook");
+    public Book getBook(Long bookId){
+        Session session = DatabaseHibernateUtility.getSessionFactory().openSession();
+        session.beginTransaction();
+        Book book = (Book)session.byId(Book.class).load((Long)bookId);;
+        session.getTransaction().commit();;
          return book;
 
     }

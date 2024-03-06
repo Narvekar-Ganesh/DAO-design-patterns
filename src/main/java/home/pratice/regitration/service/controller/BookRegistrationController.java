@@ -11,7 +11,7 @@ public class BookRegistrationController {
         bookRegistrationService = new BookRegistrationService();
     }
 
-    public Book getDetailsOfBook(int bookId) {
+    public Book getDetailsOfBook(Long bookId) {
         Book book = bookRegistrationService.getBook(bookId);
         return book;
     }
@@ -23,7 +23,7 @@ public class BookRegistrationController {
     public static void main(String[] args){
         BookRegistrationController controller =new BookRegistrationController();
 
-        Book book = controller.getDetailsOfBook(789);
+        Book book = controller.getDetailsOfBook(1L);
         System.out.println("Details of Book"+book);
 
         controller.registerBook(789,"Geeta");

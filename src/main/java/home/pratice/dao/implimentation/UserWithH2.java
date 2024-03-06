@@ -10,7 +10,7 @@ public class UserWithH2 implements UserDAO {
     public User getUser(int  userId) {
         User user = new User();
         user.setUserId(000);
-        user.setUserName("H2");
+        user.setUserName("PoseGressuser");
         return user;
     }
 
