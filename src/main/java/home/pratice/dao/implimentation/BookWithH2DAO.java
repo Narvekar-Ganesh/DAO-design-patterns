@@ -5,13 +5,13 @@ import home.pratice.domain.Book;
 import home.pratice.utillities.DatabaseHibernateUtility;
 import org.hibernate.Session;
 
-public class BookWithH2 implements BookDAO {
+public class BookWithH2DAO implements BookDAO {
     public Book getBook(Long bookId){
         Session session = DatabaseHibernateUtility.getSessionFactory().openSession();
         session.beginTransaction();
         Book book = (Book)session.byId(Book.class).load((Long)bookId);;
         session.getTransaction().commit();;
-         return book;
+        return book;
 
     }
     @Override

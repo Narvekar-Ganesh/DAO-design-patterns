@@ -2,23 +2,23 @@ package home.pratice.regitration.service.controller;
 
 //import home.pratice.design.pattern.dao.LibraryCardDAO;
 import home.pratice.domain.LibraryCard;
-import home.pratice.service.LibraryCardRegistrationService;
+import home.pratice.service.LibraryCardService;
 
 public class LibraryCardController {
-    private LibraryCardRegistrationService libraryCardRegistrationService;
+    private LibraryCardService libraryCardService;
 
     public LibraryCardController(){
-        libraryCardRegistrationService =new LibraryCardRegistrationService();
+        libraryCardService =new LibraryCardService();
     }
 
     public LibraryCard getDetailsofLibraryCard(Long cardId){
-        LibraryCard libraryCard = libraryCardRegistrationService.getLibraCard(cardId);
+        LibraryCard libraryCard = libraryCardService.getLibraCard(cardId);
         return libraryCard;
 
     }
 
     public void registerLibraryCard(int cardNumber,String cardName){
-        libraryCardRegistrationService.registerLibraryCard(cardNumber,cardName);
+        libraryCardService.registerLibraryCard(cardNumber,cardName);
     }
 
     public static void main(String [] args){
