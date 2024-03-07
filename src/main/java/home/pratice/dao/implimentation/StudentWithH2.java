@@ -9,7 +9,7 @@ public class StudentWithH2 implements StudentDAO {
     public Student getStudent(int rollNumber) {
         Student student = new Student();
         student.setRollNumber(000);
-        student.setName("poseGresstudent");
+        student.setName("H2");
         return student;
 
     }

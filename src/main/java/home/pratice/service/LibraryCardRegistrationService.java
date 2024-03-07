@@ -11,8 +11,8 @@ public class LibraryCardRegistrationService {
         libraryCardDAO = new LibraryCardWithH2();
 
     }
-    public LibraryCard getLibraCard(int cardNumber){
-        LibraryCard libraryCard =libraryCardDAO.getLibraryCard(cardNumber);
+    public LibraryCard getLibraCard(Long cardId){
+        LibraryCard libraryCard =libraryCardDAO.getLibraryCard(cardId);
         return libraryCard;
     }
 
