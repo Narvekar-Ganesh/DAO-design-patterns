@@ -9,7 +9,6 @@ public class LibraryCardService {
 
     public LibraryCardService() {
         libraryCardDAO = new LibraryCardWithH2();
-
     }
 
     public LibraryCard getLibraCard(Long cardId) {
@@ -17,9 +16,13 @@ public class LibraryCardService {
         return libraryCard;
     }
 
-    public void registerLibraryCard(int cardNumber, String cardName) {
-        libraryCardDAO.saveLibraryCard(cardNumber, cardName);
+    public String registerLibraryCard(int cardNumber, String cardName) {
+       Boolean result = libraryCardDAO.saveLibraryCard(cardNumber, cardName);
+       if(result==true){
+           return "Library card  with card number : "+cardNumber+" is registered succsesfully";
+       }else{
+           return "Library card  with card number : "+cardNumber+" is not  registered succsesfully";
+       }
     }
-
 }
 
