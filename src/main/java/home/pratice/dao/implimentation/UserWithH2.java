@@ -7,7 +7,7 @@ import org.hibernate.Session;
 
 public class UserWithH2 implements UserDAO {
     @Override
-    public User getUser(int  userId) {
+    public User getUser(int userId) {
         User user = new User();
         user.setUserId(000);
         user.setUserName("PoseGressuser");
@@ -19,12 +19,10 @@ public class UserWithH2 implements UserDAO {
         User user = new User();
         user.setUserId(userId);
         user.setUserName(userName);
-
         Session session = DatabaseHibernateUtility.getSessionFactory().openSession();
         session.beginTransaction();
         session.save(user);
         session.getTransaction().commit();
         System.out.println("User is persisted successfully");
-
     }
 }

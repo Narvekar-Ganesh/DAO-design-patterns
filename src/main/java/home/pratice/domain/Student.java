@@ -5,7 +5,7 @@ import javax.persistence.*;
 @Entity
 public class Student {
     @Id
-    @GeneratedValue(strategy= GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
     @Column
@@ -37,7 +37,6 @@ public class Student {
     public void setName(String name) {
         this.name = name;
     }
-
 
     @Override
     public String toString() {
