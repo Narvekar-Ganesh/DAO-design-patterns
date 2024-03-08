@@ -5,26 +5,30 @@ import home.pratice.domain.LibraryCard;
 import home.pratice.utillities.DatabaseHibernateUtility;
 import org.hibernate.Session;
 
-public class LibraryCardWithH2 implements LibraryCardDAO {
-    public LibraryCard getLibraryCard(int cardNumber){
-         LibraryCard libraryCard = new LibraryCard();
-         libraryCard.setCardNumber(123);
-         libraryCard.setCardName("H2");
-//        Session session = DatabaseHibernateUtility.getSessionFactory().openSession();
-//        session.beginTransaction();
-//        LibraryCard libraryCard=(LibraryCard) session.byId(LibraryCard.class).load((Long)cardNumber);
-//        session.getTransaction().commit();;
-        return libraryCard;
+import java.io.Serializable;
 
+public class LibraryCardWithH2 implements LibraryCardDAO {
+    public LibraryCard getLibraryCard(Long cardId) {
+        Session session = DatabaseHibernateUtility.getSessionFactory().openSession();
+        session.beginTransaction();
+        LibraryCard libraryCard = session.byId(LibraryCard.class).load(cardId);
+        session.getTransaction().commit();
+        return libraryCard;
     }
-    public void saveLibraryCard(int cardNumber, String cardName ){
-        LibraryCard libraryCard =new LibraryCard();
+
+    public Boolean saveLibraryCard(int cardNumber, String cardName) {
+        LibraryCard libraryCard = new LibraryCard();
         libraryCard.setCardNumber(cardNumber);
         libraryCard.setCardName(cardName);
         Session session = DatabaseHibernateUtility.getSessionFactory().openSession();
         session.beginTransaction();
-        session.save(libraryCard);
-        session.getTransaction().commit();;
-        System.out.println(" LibraryCard persisted succssefully");
+        Serializable savedId = session.save(libraryCard);
+        Long primaryKey = (Long)savedId;
+        session.getTransaction().commit();
+        if(primaryKey!=null){
+            return true;
+        }else {
+            return false;
+        }
     }
 }

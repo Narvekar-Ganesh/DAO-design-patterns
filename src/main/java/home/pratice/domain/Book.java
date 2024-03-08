@@ -32,7 +32,6 @@ public class Book {
         this.bookId = bookId;
     }
 
-
     public void setBookName(String bookName) {
         this.bookName = bookName;
     }

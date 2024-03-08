@@ -1,12 +1,11 @@
 package home.pratice.domain;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 public class LibraryCard {
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
     @Column
     private int cardNumber;

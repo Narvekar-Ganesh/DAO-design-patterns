@@ -1,32 +1,30 @@
 package home.pratice.regitration.service.controller;
 
-import home.pratice.design.pattern.dao.LibraryCardDAO;
 import home.pratice.domain.LibraryCard;
-import home.pratice.service.LibraryCardRegistrationService;
+import home.pratice.service.LibraryCardService;
 
 public class LibraryCardController {
-    private LibraryCardRegistrationService libraryCardRegistrationService;
+    private LibraryCardService libraryCardService;
 
-    public LibraryCardController(){
-        libraryCardRegistrationService =new LibraryCardRegistrationService();
+    public LibraryCardController() {
+        libraryCardService = new LibraryCardService();
     }
 
-    public LibraryCard getDetailsofLibraryCard(int cardNumber){
-        LibraryCard libraryCard = libraryCardRegistrationService.getLibraCard(cardNumber);
+    public LibraryCard getDetailsofLibraryCard(Long cardId) {
+        LibraryCard libraryCard = libraryCardService.getLibraCard(cardId);
         return libraryCard;
 
     }
 
-    public void registerLibraryCard(int cardNumber,String cardName){
-        libraryCardRegistrationService.registerLibraryCard(cardNumber,cardName);
+    public void registerLibraryCard(int cardNumber, String cardName) {
+       String result= libraryCardService.registerLibraryCard(cardNumber, cardName);
+        System.out.println(result);
     }
 
-    public static void main(String [] args){
+    public static void main(String[] args) {
         LibraryCardController controller = new LibraryCardController();
-
-        LibraryCard libraryCard = controller.getDetailsofLibraryCard(123);
-        System.out.println("Details of library"+libraryCard);
-
-        controller.registerLibraryCard(123,"Clasic");
+        controller.registerLibraryCard(123, "Classic");
+        LibraryCard libraryCard = controller.getDetailsofLibraryCard(0L);
+        System.out.println("Details of library" + libraryCard);
     }
 }
