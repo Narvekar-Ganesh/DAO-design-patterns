@@ -22,10 +22,8 @@ StudentRegistrationController {
 
     public static void main(String[] args) {
         StudentRegistrationController controller = new StudentRegistrationController();
-
+        controller.registerStudent(456, "Bunty");
         Student student = controller.getDetailsOfStudent(852);
         System.out.println("details of student : " + student);
-
-        controller.registerStudent(456, "Bunty");
     }
 }

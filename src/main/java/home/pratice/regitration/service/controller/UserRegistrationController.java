@@ -21,8 +21,8 @@ public class UserRegistrationController {
 
     public static void main(String[] args) {
         UserRegistrationController controller = new UserRegistrationController();
+        controller.registerUser(686, "Sonal");
         User user = controller.getDetailsOfUser(686);
         System.out.println("Details of Student" + user);
-        controller.registerUser(686, "Sonal");
     }
 }

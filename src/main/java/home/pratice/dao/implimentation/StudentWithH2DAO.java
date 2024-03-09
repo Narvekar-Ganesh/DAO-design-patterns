@@ -7,7 +7,7 @@ import org.hibernate.Session;
 
 import java.io.Serializable;
 
-public class StudentWithH2 implements StudentDAO {
+public class StudentWithH2DAO implements StudentDAO {
     public Student getStudent(int rollNumber) {
         Student student = new Student();
         student.setRollNumber(000);
@@ -21,8 +21,8 @@ public class StudentWithH2 implements StudentDAO {
         student.setName(name);
         Session session = DatabaseHibernateUtility.getSessionFactory().openSession();
         session.beginTransaction();
-        Serializable saveId = session.save(rollNumber);
-        Long primaryKey = (Long) saveId;
+        Serializable savedId = session.save(rollNumber);
+        Long primaryKey = (Long) savedId;
         session.getTransaction().commit();
         if (primaryKey != null) {
             return true;
