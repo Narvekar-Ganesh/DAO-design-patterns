@@ -5,6 +5,8 @@ import home.pratice.domain.Book;
 import home.pratice.utillities.DatabaseHibernateUtility;
 import org.hibernate.Session;
 
+import java.io.Serializable;
+
 public class BookWithH2DAO implements BookDAO {
     public Book getBook(Long bookId) {
         Session session = DatabaseHibernateUtility.getSessionFactory().openSession();
@@ -21,9 +23,13 @@ public class BookWithH2DAO implements BookDAO {
         book.setBookName(bookName);
         Session session = DatabaseHibernateUtility.getSessionFactory().openSession();
         session.beginTransaction();
-        session.save(book);
+        Serializable savedId = session.save(bookId);
+        Long primaryKey = (Long) savedId;
         session.getTransaction().commit();
-        System.out.println("Book persisted succssefully");
-        return null;
+        if (primaryKey != null) {
+            return true;
+        } else {
+            return false;
+        }
     }
 }

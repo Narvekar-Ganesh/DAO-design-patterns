@@ -10,13 +10,11 @@ public class BookRegistrationService {
 
     public BookRegistrationService() {
         bookDAO = new BookWithH2DAO();
-
     }
 
     public Book getBook(Long bookId) {
-         Book book =bookDAO.getBook(bookId);
-        return book ;
-
+        Book book = bookDAO.getBook(bookId);
+        return book;
     }
 
     public void registerBook(int bookId, String name) {

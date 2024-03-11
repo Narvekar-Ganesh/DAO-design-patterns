@@ -5,9 +5,11 @@ import home.pratice.domain.User;
 import home.pratice.utillities.DatabaseHibernateUtility;
 import org.hibernate.Session;
 
-public class UserWithH2 implements UserDAO {
+import java.io.Serializable;
+
+public class UserWithH2DAO implements UserDAO {
     @Override
-    public User getUser(int  userId) {
+    public User getUser(int userId) {
         User user = new User();
         user.setUserId(000);
         user.setUserName("PoseGressuser");
@@ -15,16 +17,20 @@ public class UserWithH2 implements UserDAO {
     }
 
     @Override
-    public void saveUser(int userId, String userName) {
+    public Boolean saveUser(int userId, String userName) {
         User user = new User();
         user.setUserId(userId);
         user.setUserName(userName);
-
         Session session = DatabaseHibernateUtility.getSessionFactory().openSession();
         session.beginTransaction();
-        session.save(user);
-        session.getTransaction().commit();
-        System.out.println("User is persisted successfully");
 
+        Serializable savedId =session.save(userId);
+        Long primaryKey = (Long)savedId;
+        session.getTransaction().commit();
+        if (primaryKey!=null){
+            return true;
+        }else{
+            return false;
+        }
     }
 }

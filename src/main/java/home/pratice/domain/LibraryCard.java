@@ -6,23 +6,16 @@ import javax.persistence.*;
 public class LibraryCard {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private long id;
+    private Long id;
+
     @Column
     private int cardNumber;
 
     @Column
     private String cardName;
 
-    public long getId() {
-        return id;
-    }
-
     public int getCardNumber() {
         return cardNumber;
-    }
-
-    public void setId(long id) {
-        this.id = id;
     }
 
     public void setCardNumber(int cardNumber) {
@@ -35,6 +28,14 @@ public class LibraryCard {
 
     public String getCardName() {
         return cardName;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public Long getId() {
+        return id;
     }
 
     @Override

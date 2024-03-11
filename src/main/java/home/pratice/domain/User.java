@@ -6,12 +6,13 @@ import javax.persistence.*;
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private long userNumber;
+    private Long userNumber;
 
     @Column
     private int userId;
 
     private String userName;
+
     @Column
 
     public String getUserName() {
@@ -30,11 +31,11 @@ public class User {
         this.userName = userName;
     }
 
-    public long getUserNumber() {
+    public Long getUserNumber() {
         return userNumber;
     }
 
-    public void setUserNumber(long userNumber) {
+    public void setUserNumber(Long userNumber) {
         this.userNumber = userNumber;
     }
 

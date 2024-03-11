@@ -7,7 +7,7 @@ import org.hibernate.Session;
 
 import java.io.Serializable;
 
-public class LibraryCardWithH2 implements LibraryCardDAO {
+public class LibraryCardWithH2DAO implements LibraryCardDAO {
     public LibraryCard getLibraryCard(Long cardId) {
         Session session = DatabaseHibernateUtility.getSessionFactory().openSession();
         session.beginTransaction();
@@ -23,11 +23,11 @@ public class LibraryCardWithH2 implements LibraryCardDAO {
         Session session = DatabaseHibernateUtility.getSessionFactory().openSession();
         session.beginTransaction();
         Serializable savedId = session.save(libraryCard);
-        Long primaryKey = (Long)savedId;
+        Long primaryKey = (Long) savedId;
         session.getTransaction().commit();
-        if(primaryKey!=null){
+        if (primaryKey != null) {
             return true;
-        }else {
+        } else {
             return false;
         }
     }

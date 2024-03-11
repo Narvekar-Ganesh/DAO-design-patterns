@@ -5,24 +5,30 @@ import home.pratice.domain.Student;
 import home.pratice.utillities.DatabaseHibernateUtility;
 import org.hibernate.Session;
 
-public class StudentWithH2 implements StudentDAO {
+import java.io.Serializable;
+
+public class StudentWithH2DAO implements StudentDAO {
     public Student getStudent(int rollNumber) {
         Student student = new Student();
         student.setRollNumber(000);
         student.setName("H2");
         return student;
-
     }
-    public void saveStudent(int rollNumber, String name) {
-        Student student= new Student();
+
+    public Boolean saveStudent(int rollNumber, String name) {
+        Student student = new Student();
         student.setRollNumber(rollNumber);
         student.setName(name);
         Session session = DatabaseHibernateUtility.getSessionFactory().openSession();
         session.beginTransaction();
-        session.save(student);
+        Serializable savedId = session.save(rollNumber);
+        Long primaryKey = (Long) savedId;
         session.getTransaction().commit();
-        System.out.println("student is persisted successfully");
-
+        if (primaryKey != null) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
 

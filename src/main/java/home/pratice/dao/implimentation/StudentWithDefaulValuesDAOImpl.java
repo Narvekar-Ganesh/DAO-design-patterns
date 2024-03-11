@@ -5,6 +5,8 @@ import home.pratice.domain.Student;
 import home.pratice.utillities.DatabaseHibernateUtility;
 import org.hibernate.Session;
 
+import java.io.Serializable;
+
 public class StudentWithDefaulValuesDAOImpl implements StudentDAO {
     public Student getStudent(int rollNumber) {
         Student student = new Student();
@@ -15,16 +17,19 @@ public class StudentWithDefaulValuesDAOImpl implements StudentDAO {
     }
 
     @Override
-    public void saveStudent(int rollNumber, String name) {
+    public Boolean saveStudent(int rollNumber, String name) {
         Student student= new Student();
         student.setRollNumber(rollNumber);
         student.setName(name);
         Session session = DatabaseHibernateUtility.getSessionFactory().openSession();
         session.beginTransaction();
-        session.save(student);
+        Serializable saveId =session.save(rollNumber);
+        Long primaryKey = (Long) saveId;
         session.getTransaction().commit();
-        System.out.println("student is persisted successfully");
-
+        if(primaryKey!=null){
+            return true;
+        }else{
+            return true;
+        }
     }
-
 }
