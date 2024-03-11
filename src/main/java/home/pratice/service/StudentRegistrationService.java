@@ -1,6 +1,6 @@
 package home.pratice.service;
 
-import home.pratice.dao.implimentation.StudentWithH2;
+import home.pratice.dao.implimentation.StudentWithH2DAO;
 import home.pratice.design.pattern.dao.StudentDAO;
 import home.pratice.domain.Student;
 
@@ -8,7 +8,7 @@ public class StudentRegistrationService {
     private StudentDAO studentDAO; //has-a relationship
 
     public StudentRegistrationService(){
-        studentDAO = new StudentWithH2(); //is-a relationship - Dependency-injection
+        studentDAO = new StudentWithH2DAO(); //is-a relationship - Dependency-injection
     }
 
     public Student getStudent(int rollNumber){

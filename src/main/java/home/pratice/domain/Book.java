@@ -4,40 +4,34 @@ import javax.persistence.*;
 
 @Entity
 public class Book {
-
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private long bookId;
+    private Long bookId;
 
     @Column
     private int bookNumber;
 
-
     @Column
     private String bookName;
 
-    public long getBookId() {
+    public int getBookNumber() {
+        return bookNumber;
+    }
+
+    public Long getBookId() {
         return bookId;
     }
 
-    public int getBookNumber() {
-        return bookNumber;
+    public void setBookId(Long bookId) {
+        this.bookId = bookId;
     }
 
     public String getBookName() {
         return bookName;
     }
 
-    public void setBookId(int bookId) {
-        this.bookId = bookId;
-    }
-
     public void setBookName(String bookName) {
         this.bookName = bookName;
-    }
-
-    public void setBookId(long bookId) {
-        this.bookId = bookId;
     }
 
     public void setBookNumber(int bookNumber) {
@@ -47,8 +41,8 @@ public class Book {
     @Override
     public String toString() {
         return "Book{" +
-                "bookNumber=" + bookNumber +
-                ", bookId=" + bookId +
+                "bookId=" + bookId +
+                ", bookNumber=" + bookNumber +
                 ", bookName='" + bookName + '\'' +
                 '}';
     }

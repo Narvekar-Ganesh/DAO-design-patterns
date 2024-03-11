@@ -13,11 +13,10 @@ public class LibraryCardController {
     public LibraryCard getDetailsofLibraryCard(Long cardId) {
         LibraryCard libraryCard = libraryCardService.getLibraCard(cardId);
         return libraryCard;
-
     }
 
     public void registerLibraryCard(int cardNumber, String cardName) {
-       String result= libraryCardService.registerLibraryCard(cardNumber, cardName);
+        String result = libraryCardService.registerLibraryCard(cardNumber, cardName);
         System.out.println(result);
     }
 
