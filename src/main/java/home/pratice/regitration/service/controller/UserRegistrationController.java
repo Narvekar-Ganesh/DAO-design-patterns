@@ -33,15 +33,11 @@ public class UserRegistrationController {
             user.setUserName("User-Name"+i+10);
             user.setUserId(i+10);
             users.add(user);
-
         }
 
         for(User eachUser:users){
            String responase= controller.registerUser(eachUser.getUserId(), eachUser.getUserName());
             System.out.println(responase);
         }
-//        controller.registerUser(686, "Sonal");
-//        User user = controller.getDetailsOfUser(686);
-//        System.out.println("Details of Student" + user);
     }
 }
