@@ -16,9 +16,23 @@ public class StudentRegistrationService {
         return student;
     }
     public String  registerStudent(int rollNumber , String name){
-        studentDAO.saveStudent(rollNumber,name) ;
-        return name;
-
+       Boolean result=  studentDAO.saveStudent(rollNumber,name) ;
+        if(result){
+            return"Student with student name:" + name + "is registered succssefully";
+        }else {
+            return"Student with student name:" + name + "is not registered";
+        }
+    }
+    public String deleteStudent(Long studentId){
+        Boolean result= studentDAO.deleteStudent(studentId);
+            if (result){
+                 return "Requested student is deleted sucssefully";
+            }else{
+                return "Requested student is not deleted ";
+            }
 
     }
+
 }
+
+
