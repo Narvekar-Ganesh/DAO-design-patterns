@@ -18,7 +18,7 @@ public class BookRegistrationController {
         return book;
     }
 
-    public String  registerBook(int bookId, String name) {
+    public String  registerBook( int bookId, String name) {
         String result = bookRegistrationService.registerBook(bookId,name);
         return result;
 
@@ -31,7 +31,7 @@ public class BookRegistrationController {
         for(int i=0;i<10;i++){
             Book book = new Book();
             book.setBookName("Book-Name-"+i+10);
-            book.setBookNumber(1+10);
+            book.setBookNumber(i+10);
             books.add(book);
         }
         for(Book eachBook:books){

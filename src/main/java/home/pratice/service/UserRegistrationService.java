@@ -16,7 +16,12 @@ public class UserRegistrationService {
         return user;
     }
 
-    public void registerUser(int userId, String userName) {
-        userDAO.saveUser(userId, userName);
+    public String registerUser(int userId, String userName) {
+        Boolean result = userDAO.saveUser(userId, userName);
+        if (result == true) {
+            return "User with user name:" + result + "is registered succsesfully";
+        } else {
+            return "User with user name:" + result + "is not  registered ";
+        }
     }
 }

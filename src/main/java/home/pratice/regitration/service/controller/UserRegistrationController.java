@@ -3,6 +3,9 @@ package home.pratice.regitration.service.controller;
 import home.pratice.domain.User;
 import home.pratice.service.UserRegistrationService;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class UserRegistrationController {
     UserRegistrationService userRegistrationService;
 
@@ -15,14 +18,30 @@ public class UserRegistrationController {
         return user;
     }
 
-    public void registerUser(int userId, String userName) {
-        userRegistrationService.registerUser(userId, userName);
+    public String  registerUser(int userId, String userName) {
+        String response =userRegistrationService.registerUser(userId, userName);
+        return response;
     }
+
 
     public static void main(String[] args) {
         UserRegistrationController controller = new UserRegistrationController();
-        controller.registerUser(686, "Sonal");
-        User user = controller.getDetailsOfUser(686);
-        System.out.println("Details of Student" + user);
+        List<User> users= new ArrayList<>();
+
+        for (int i=0;i<=10;i++){
+            User user = new User();
+            user.setUserName("User-Name"+i+10);
+            user.setUserId(i+10);
+            users.add(user);
+
+        }
+
+        for(User eachUser:users){
+           String responase= controller.registerUser(eachUser.getUserId(), eachUser.getUserName());
+            System.out.println(responase);
+        }
+//        controller.registerUser(686, "Sonal");
+//        User user = controller.getDetailsOfUser(686);
+//        System.out.println("Details of Student" + user);
     }
 }
