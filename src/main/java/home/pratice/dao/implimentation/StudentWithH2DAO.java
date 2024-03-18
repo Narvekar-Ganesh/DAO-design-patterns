@@ -30,6 +30,4 @@ public class StudentWithH2DAO implements StudentDAO {
             return false;
         }
     }
-
-
 }

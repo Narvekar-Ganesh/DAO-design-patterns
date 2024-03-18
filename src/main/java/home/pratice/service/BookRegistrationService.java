@@ -19,9 +19,9 @@ public class BookRegistrationService {
 
     public String registerBook(int bookId, String name) {
         Boolean result = bookDAO.saveBook(bookId, name);
-        if (result==true) {
+        if (result) {
             return "Book with book name:" + name + "is registered succssefully";
-        }else{
+        } else {
             return "Book with book name:" + name + "is not  registered succsefully";
         }
 
