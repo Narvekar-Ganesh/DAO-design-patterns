@@ -6,11 +6,10 @@ import home.pratice.service.StudentRegistrationService;
 import java.util.ArrayList;
 import java.util.List;
 
-public class
-StudentRegistrationController {
+public class StudentController {
     private final StudentRegistrationService studentRegistrationService;//has-a relationship
 
-    public StudentRegistrationController() {
+    public StudentController() {
         studentRegistrationService = new StudentRegistrationService();
     }
 
@@ -21,9 +20,15 @@ StudentRegistrationController {
     public void registerStudent(int rollNumber, String name) {
         studentRegistrationService.registerStudent(rollNumber, name);
     }
+    public static void deleteGivenStudent(){
+        StudentController controller =new StudentController();
+        System.out.println(controller.studentRegistrationService.deleteStudent(11L));
+    }
 
     public static void main(String[] args) {
-        StudentRegistrationController controller = new StudentRegistrationController();
+        deleteGivenStudent();
+
+        StudentController controller = new StudentController();
         List<Student> students =new ArrayList<>();
 
         for (int i =0;i<=10;i++){
@@ -39,4 +44,5 @@ StudentRegistrationController {
         }
 
     }
+
 }
