@@ -39,5 +39,6 @@ public class UserRegistrationController {
            String responase= controller.registerUser(eachUser.getUserId(), eachUser.getUserName());
             System.out.println(responase);
         }
+
     }
 }

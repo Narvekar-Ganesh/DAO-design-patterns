@@ -32,4 +32,19 @@ public class StudentWithDefaulValuesDAOImpl implements StudentDAO {
             return true;
         }
     }
+    public Boolean deleteStudent(Long studentNumber){
+        Session session = DatabaseHibernateUtility.getSessionFactory().openSession();
+        session.beginTransaction();
+        Student studentFromDatabase = session.byId(Student.class).load((Long) studentNumber);
+        if(studentFromDatabase!=null){
+            session.delete(studentFromDatabase);
+            session.getTransaction().commit();
+            return true;
+        }else {
+            return false;
+        }
+    }
+
+
 }
+

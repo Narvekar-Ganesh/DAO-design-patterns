@@ -6,5 +6,7 @@ public interface StudentDAO {
     Student getStudent(int rollNumber);
 
     Boolean saveStudent(int rollNumber, String name);
+
+    Boolean deleteStudent(Long studentId);
 }
 

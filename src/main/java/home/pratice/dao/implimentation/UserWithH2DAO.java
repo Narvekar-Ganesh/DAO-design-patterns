@@ -24,7 +24,7 @@ public class UserWithH2DAO implements UserDAO {
         Session session = DatabaseHibernateUtility.getSessionFactory().openSession();
         session.beginTransaction();
 
-        Serializable savedId =session.save(user);
+        Serializable savedId =session.save(userId);
         Long primaryKey = (Long)savedId;
         session.getTransaction().commit();
         if (primaryKey!=null){
