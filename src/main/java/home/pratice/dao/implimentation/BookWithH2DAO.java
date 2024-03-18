@@ -23,7 +23,7 @@ public class BookWithH2DAO implements BookDAO {
         book.setBookName(bookName);
         Session session = DatabaseHibernateUtility.getSessionFactory().openSession();
         session.beginTransaction();
-        Serializable savedId = session.save(bookId);
+        Serializable savedId = session.save(book);
         Long primaryKey = (Long) savedId;
         session.getTransaction().commit();
         if (primaryKey != null) {

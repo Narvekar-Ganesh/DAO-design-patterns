@@ -17,7 +17,13 @@ public class BookRegistrationService {
         return book;
     }
 
-    public void registerBook(int bookId, String name) {
-        bookDAO.saveBook(bookId, name);
+    public String registerBook(int bookId, String name) {
+        Boolean result = bookDAO.saveBook(bookId, name);
+        if (result==true) {
+            return "Book with book name:" + name + "is registered succssefully";
+        }else{
+            return "Book with book name:" + name + "is not  registered succsefully";
+        }
+
     }
 }
