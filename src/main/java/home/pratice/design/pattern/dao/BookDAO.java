@@ -6,4 +6,6 @@ public interface BookDAO {
     Book getBook(Long bookId);
 
     Boolean saveBook(int bookId, String bookName);
+
+    Boolean deleteBook(Long bookId);
 }

@@ -37,5 +37,6 @@ StudentRegistrationController {
             controller.registerStudent(eachStudent.getRollNumber(), eachStudent.getName());
 
         }
+
     }
 }

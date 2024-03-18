@@ -32,4 +32,19 @@ public class BookWithH2DAO implements BookDAO {
             return false;
         }
     }
+
+    @Override
+    public Boolean deleteBook(Long bookId) {
+        Session session = DatabaseHibernateUtility.getSessionFactory().openSession();
+        session.beginTransaction();
+        Book bookFromDatabase = session.byId(Book.class).load((Long) bookId);
+        if (bookFromDatabase!=null){
+            session.delete(bookFromDatabase);
+            session.getTransaction().commit();
+            return true;
+        }else{
+            return false;
+        }
+
+    }
 }

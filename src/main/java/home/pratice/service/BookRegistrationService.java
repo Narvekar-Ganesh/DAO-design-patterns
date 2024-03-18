@@ -24,6 +24,15 @@ public class BookRegistrationService {
         } else {
             return "Book with book name:" + name + "is not  registered succsefully";
         }
+    }
+
+    public String deleteBook(Long bookId){
+       Boolean result= bookDAO.deleteBook(bookId);
+       if(result){
+           return "Requested book is deleted sucssefully";
+       }else{
+           return "Requested book is not deleted ";
+       }
 
     }
 }

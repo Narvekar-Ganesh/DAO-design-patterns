@@ -23,7 +23,21 @@ public class BookRegistrationController {
         return result;
     }
 
+    public String deleteBook(Long bookId){
+      return bookRegistrationService.deleteBook(bookId);
+    }
+
     public static void main(String[] args) {
+//        doBookRegistration();
+        deleteGivenBook();
+    }
+
+    private static void deleteGivenBook(){
+        BookRegistrationController controller = new BookRegistrationController();
+        System.out.println(controller.deleteBook(114L));
+    }
+
+    private static void doBookRegistration() {
         BookRegistrationController controller = new BookRegistrationController();
         List<Book> books = new ArrayList<>();
         Book book = null;
@@ -37,5 +51,6 @@ public class BookRegistrationController {
             String response = controller.registerBook(bookToBeRegistered.getBookNumber(), bookToBeRegistered.getBookName());
             System.out.println(response);
         }
+
     }
 }
