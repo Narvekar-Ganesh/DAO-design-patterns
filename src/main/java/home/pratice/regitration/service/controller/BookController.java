@@ -6,10 +6,10 @@ import home.pratice.service.BookRegistrationService;
 import java.util.ArrayList;
 import java.util.List;
 
-public class BookRegistrationController {
+public class BookController {
     private BookRegistrationService bookRegistrationService;
 
-    public BookRegistrationController() {
+    public BookController() {
         bookRegistrationService = new BookRegistrationService();
     }
 
@@ -23,22 +23,33 @@ public class BookRegistrationController {
         return result;
     }
 
-    public String deleteBook(Long bookId){
-      return bookRegistrationService.deleteBook(bookId);
+    public String deleteBook(Long bookId) {
+        return bookRegistrationService.deleteBook(bookId);
+    }
+
+    public String updateBook(Long bookId, String name) {
+        return bookRegistrationService.updateBook(bookId, name);
     }
 
     public static void main(String[] args) {
-//        doBookRegistration();
-        deleteGivenBook();
+        doBookRegistration();
+//        deleteGivenBook();
+//        updateGivenBook(44L,"Sahil");
+
     }
 
-    private static void deleteGivenBook(){
-        BookRegistrationController controller = new BookRegistrationController();
+    private static void updateGivenBook(Long bookId, String bookName) {
+        BookController controller =new BookController();
+        controller.updateBook(bookId,bookName);
+    }
+
+    private static void deleteGivenBook() {
+        BookController controller = new BookController();
         System.out.println(controller.deleteBook(114L));
     }
 
     private static void doBookRegistration() {
-        BookRegistrationController controller = new BookRegistrationController();
+        BookController controller = new BookController();
         List<Book> books = new ArrayList<>();
         Book book = null;
         for (int i = 0; i < 10; i++) {

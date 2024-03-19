@@ -8,4 +8,6 @@ public interface BookDAO {
     Boolean saveBook(int bookId, String bookName);
 
     Boolean deleteBook(Long bookId);
+
+    void updateBook(Book book);
 }

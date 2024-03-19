@@ -33,6 +33,23 @@ public class BookRegistrationService {
        }else{
            return "Requested book is not deleted ";
        }
+    }
 
+    public String updateBook(Long bookId, String nameToBeUpdated){
+        Book bookToBeUpdated = bookDAO.getBook(bookId);
+        if(bookToBeUpdated!=null){
+            bookToBeUpdated.setBookName(nameToBeUpdated);
+            bookDAO.updateBook(bookToBeUpdated);
+
+            return "book is updated successfully";
+
+        }else {
+            return "book is not updated ";
+        }
+
+//        bookToBeUpdated.setBookName(nameToBeUpdated);
+//        bookDAO.updateBook(bookToBeUpdated);
+//
+//        return "book is updated successfully";
     }
 }

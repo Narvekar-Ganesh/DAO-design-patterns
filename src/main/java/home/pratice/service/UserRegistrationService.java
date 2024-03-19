@@ -23,4 +23,13 @@ public class UserRegistrationService {
              return "USer with user :"+userName+"is not registered ";
          }
      }
+
+     public String deleteUser(Long userId){
+         Boolean result =userDAO.deleteUser(userId);
+         if(result){
+             return"Requested user is deleted sucssefully";
+         }else{
+             return "Requested user is not deleted ";
+         }
+     }
 }

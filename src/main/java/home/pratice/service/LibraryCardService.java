@@ -24,5 +24,15 @@ public class LibraryCardService {
             return "Library card  with card number : " + cardNumber + " is not  registered succsesfully";
         }
     }
+
+
+    public String deleteLibraryCard(Long libraryCardId) {
+        Boolean result=libraryCardDAO.deleteLibraryCard(libraryCardId);
+        if(result){
+            return "Request user is deleted ";
+        }else {
+            return "Requested book is not deleted";
+        }
+    }
 }
 

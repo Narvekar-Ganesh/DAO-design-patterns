@@ -1,10 +1,12 @@
 package home.pratice.regitration.service.controller;
 
 import home.pratice.domain.Student;
+import home.pratice.service.BookRegistrationService;
 import home.pratice.service.StudentRegistrationService;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.LoggingMXBean;
 
 public class StudentController {
     private final StudentRegistrationService studentRegistrationService;//has-a relationship
@@ -13,21 +15,47 @@ public class StudentController {
         studentRegistrationService = new StudentRegistrationService();
     }
 
-    public Student getDetailsOfStudent(int rollNumber) {
-        return studentRegistrationService.getStudent(rollNumber);
+    public Student getDetailsOfStudent(Long studentId) {
+        return studentRegistrationService.getStudent(studentId);
     }
 
     public void registerStudent(int rollNumber, String name) {
         studentRegistrationService.registerStudent(rollNumber, name);
     }
-    public static void deleteGivenStudent(){
-        StudentController controller =new StudentController();
-        System.out.println(controller.studentRegistrationService.deleteStudent(11L));
+
+    public String deleteStudent(Long studentId){
+        return studentRegistrationService.deleteStudent(studentId);
     }
 
-    public static void main(String[] args) {
-        deleteGivenStudent();
+    public static void deleteGivenStudent(Long studentId){
+        StudentController controller =new StudentController();
+        System.out.println(controller.deleteStudent(studentId));
+    }
 
+    public String updateStudent(Long studentId,String name){
+        return  studentRegistrationService.updateStudent(studentId,name);
+    }
+
+
+    /**
+     * This method acts as a customer / client to your vendor
+     *
+     * @param args
+     */
+    public static void main(String[] args) {
+//        updateGivenBook(27L,"viraj" );
+//        deleteGivenStudent(15L);
+        saveMultipleStudents();
+
+
+    }
+
+    private static void updateGivenBook(Long studentId ,String studentname){
+        StudentController controller = new StudentController();
+        controller.updateStudent(studentId,studentname);
+    }
+
+    private static void saveMultipleStudents() {
         StudentController controller = new StudentController();
         List<Student> students =new ArrayList<>();
 
@@ -42,7 +70,6 @@ public class StudentController {
             controller.registerStudent(eachStudent.getRollNumber(), eachStudent.getName());
 
         }
-
     }
 
 }

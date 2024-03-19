@@ -18,13 +18,29 @@ public class UserRegistrationController {
         return user;
     }
 
+
     public String  registerUser(int userId, String userName) {
         String response =userRegistrationService.registerUser(userId, userName);
         return response;
     }
+    public static void deleteGivenUser(){
+        UserRegistrationController controller=new UserRegistrationController();
+        System.out.println(controller.userRegistrationService.deleteUser(14L));
+    }
+
 
 
     public static void main(String[] args) {
+
+
+//         deleteGivenUser();
+
+
+        doRegistration();
+
+    }
+
+    private static void doRegistration() {
         UserRegistrationController controller = new UserRegistrationController();
         List<User> users= new ArrayList<>();
 
@@ -39,6 +55,5 @@ public class UserRegistrationController {
            String responase= controller.registerUser(eachUser.getUserId(), eachUser.getUserName());
             System.out.println(responase);
         }
-
     }
 }

@@ -1,7 +1,6 @@
 package home.pratice.dao.implimentation;
 
 import home.pratice.design.pattern.dao.StudentDAO;
-import home.pratice.domain.Book;
 import home.pratice.domain.Student;
 import home.pratice.utillities.DatabaseHibernateUtility;
 import org.hibernate.Session;
@@ -9,17 +8,14 @@ import org.hibernate.Session;
 import java.io.Serializable;
 
 public class StudentWithH2DAO implements StudentDAO {
-    public Student getStudent(int rollNumber) {
+    public Student getStudent(Long studentId) {
         Student student = new Student();
         student.setRollNumber(000);
         student.setName("H2");
         return student;
     }
 
-    public Boolean saveStudent(int rollNumber, String name) {
-        Student student = new Student();
-        student.setRollNumber(rollNumber);
-        student.setName(name);
+    public Boolean saveStudent(Student student) {
         Session session = DatabaseHibernateUtility.getSessionFactory().openSession();
         session.beginTransaction();
         Serializable savedId = session.save(student);
@@ -31,6 +27,7 @@ public class StudentWithH2DAO implements StudentDAO {
             return false;
         }
     }
+
     public Boolean deleteStudent(Long studentNumber){
         Session session = DatabaseHibernateUtility.getSessionFactory().openSession();
         session.beginTransaction();
@@ -44,4 +41,19 @@ public class StudentWithH2DAO implements StudentDAO {
         }
     }
 
-}
+    @Override
+    public void updateStudent(Student student) {
+        Session session= DatabaseHibernateUtility.getSessionFactory().openSession();
+        session.beginTransaction();
+        session.update(student);
+        session.getTransaction().commit();
+
+    }
+
+
+
+    }
+
+
+
+

@@ -8,7 +8,7 @@ import org.hibernate.Session;
 import java.io.Serializable;
 
 public class StudentWithDefaulValuesDAOImpl implements StudentDAO {
-    public Student getStudent(int rollNumber) {
+    public Student getStudent(Long studentId) {
         Student student = new Student();
         student.setRollNumber(000);
         student.setName("H2");
@@ -17,13 +17,10 @@ public class StudentWithDefaulValuesDAOImpl implements StudentDAO {
     }
 
     @Override
-    public Boolean saveStudent(int rollNumber, String name) {
-        Student student= new Student();
-        student.setRollNumber(rollNumber);
-        student.setName(name);
+    public Boolean saveStudent(Student student) {
         Session session = DatabaseHibernateUtility.getSessionFactory().openSession();
         session.beginTransaction();
-        Serializable saveId =session.save(rollNumber);
+        Serializable saveId =session.save(student);
         Long primaryKey = (Long) saveId;
         session.getTransaction().commit();
         if(primaryKey!=null){
@@ -45,6 +42,15 @@ public class StudentWithDefaulValuesDAOImpl implements StudentDAO {
         }
     }
 
+
+
+    public void updateStudent(Student student) {
+        Session session= DatabaseHibernateUtility.getSessionFactory().openSession();
+        session.beginTransaction();
+        session.update(student);
+        session.getTransaction().commit();
+
+    }
 
 }
 

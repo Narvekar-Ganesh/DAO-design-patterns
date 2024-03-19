@@ -6,7 +6,7 @@ import javax.persistence.*;
 public class Student {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+    private Long studentId;
 
     @Column
     private int rollNumber;
@@ -14,12 +14,12 @@ public class Student {
     @Column
     private String name;
 
-    public Long getId() {
-        return id;
+    public Long getStudentId() {
+        return studentId;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setStudentId(Long studentId) {
+        this.studentId = studentId;
     }
 
     public int getRollNumber() {
@@ -41,7 +41,7 @@ public class Student {
     @Override
     public String toString() {
         return "Student{" +
-                "id=" + id +
+                "id=" + studentId +
                 ", rollNumber=" + rollNumber +
                 ", name='" + name + '\'' +
                 '}';

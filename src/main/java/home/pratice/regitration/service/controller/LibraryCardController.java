@@ -3,6 +3,9 @@ package home.pratice.regitration.service.controller;
 import home.pratice.domain.LibraryCard;
 import home.pratice.service.LibraryCardService;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class LibraryCardController {
     private LibraryCardService libraryCardService;
 
@@ -15,15 +18,39 @@ public class LibraryCardController {
         return libraryCard;
     }
 
-    public void registerLibraryCard(int cardNumber, String cardName) {
+    public String registerLibraryCard(int cardNumber, String cardName) {
         String result = libraryCardService.registerLibraryCard(cardNumber, cardName);
-        System.out.println(result);
+        return result;
+    }
+
+    public String deleteLibraryCard(Long libraryCardId){
+        return libraryCardService.deleteLibraryCard(libraryCardId);
     }
 
     public static void main(String[] args) {
+        deRegistration();
+
+//
+    }
+    public  static void deleteLibraryCard(){
+        LibraryCardController controller =new LibraryCardController();
+        System.out.println(controller.deleteLibraryCard(44L));
+    }
+
+    private static void deRegistration() {
         LibraryCardController controller = new LibraryCardController();
-        controller.registerLibraryCard(123, "Classic");
-        LibraryCard libraryCard = controller.getDetailsofLibraryCard(0L);
-        System.out.println("Details of library" + libraryCard);
+        List<LibraryCard>libraryCards =new ArrayList<>();
+        LibraryCard libraryCard =null;
+        for(int i =0;i<10;i++){
+            libraryCard=new LibraryCard();
+            libraryCard.setCardName("LibraryCard-Name"+i+10);
+            libraryCard.setCardNumber(i+10);
+            libraryCards.add(libraryCard);
+        }
+        for(LibraryCard libraryCardToBeRegister : libraryCards){
+
+            String response =controller.registerLibraryCard(libraryCardToBeRegister.getCardNumber(),libraryCardToBeRegister.getCardName());
+            System.out.println(response);
+        }
     }
 }
