@@ -27,10 +27,10 @@ public class LibraryCardService {
 
 
     public String deleteLibraryCard(Long libraryCardId) {
-        Boolean result=libraryCardDAO.deleteLibraryCard(libraryCardId);
-        if(result){
+        Boolean result = libraryCardDAO.deleteLibraryCard(libraryCardId);
+        if (result) {
             return "Request user is deleted ";
-        }else {
+        } else {
             return "Requested book is not deleted";
         }
     }

@@ -33,7 +33,6 @@ public class StudentRegistrationService {
         } else {
             return "Requested student is not deleted ";
         }
-
     }
 
     private Student prepareStudent(int rollNumber, String name) {
@@ -43,22 +42,16 @@ public class StudentRegistrationService {
         return student;
     }
 
-
-    public String updateStudent(Long id, String nameToBeUpdate){
-        Student studentToBeUpdate= studentDAO.getStudent(id);
-        if (studentToBeUpdate!=null){
+    public String updateStudent(Long id, String nameToBeUpdate) {
+        Student studentToBeUpdate = studentDAO.getStudent(id);
+        if (studentToBeUpdate != null) {
             studentToBeUpdate.setName(nameToBeUpdate);
             studentDAO.updateStudent(studentToBeUpdate);
-
-            return  "Student id upodated";
-        }else{
+            return "Student id updated successfully";
+        } else {
             return "Student is not updated";
-
         }
-
     }
-
-
 }
 
 

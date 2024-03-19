@@ -32,15 +32,14 @@ public class BookController {
     }
 
     public static void main(String[] args) {
-        doBookRegistration();
+//        doBookRegistration();
 //        deleteGivenBook();
-//        updateGivenBook(44L,"Sahil");
-
+        updateGivenBook(54L, "Sahil");
     }
 
     private static void updateGivenBook(Long bookId, String bookName) {
-        BookController controller =new BookController();
-        controller.updateBook(bookId,bookName);
+        BookController controller = new BookController();
+        controller.updateBook(bookId, bookName);
     }
 
     private static void deleteGivenBook() {
@@ -62,6 +61,5 @@ public class BookController {
             String response = controller.registerBook(bookToBeRegistered.getBookNumber(), bookToBeRegistered.getBookName());
             System.out.println(response);
         }
-
     }
 }

@@ -2,7 +2,6 @@ package home.pratice.dao.implimentation;
 
 import home.pratice.design.pattern.dao.LibraryCardDAO;
 import home.pratice.domain.LibraryCard;
-import home.pratice.domain.User;
 import home.pratice.utillities.DatabaseHibernateUtility;
 import org.hibernate.Session;
 
@@ -33,15 +32,15 @@ public class LibraryCardWithH2DAO implements LibraryCardDAO {
         }
     }
 
-    public Boolean deleteLibraryCard(Long libraryCardID){
+    public Boolean deleteLibraryCard(Long libraryCardID) {
         Session session = DatabaseHibernateUtility.getSessionFactory().openSession();
         session.beginTransaction();
-        LibraryCard libraryCardFromDatabase = session.byId(LibraryCard.class).load((Long)libraryCardID);
-        if(libraryCardFromDatabase!=null){
+        LibraryCard libraryCardFromDatabase = session.byId(LibraryCard.class).load((Long) libraryCardID);
+        if (libraryCardFromDatabase != null) {
             session.delete(libraryCardFromDatabase);
             session.getTransaction().commit();
             return true;
-        }else{
+        } else {
             return false;
         }
 

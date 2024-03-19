@@ -26,24 +26,23 @@ public class BookRegistrationService {
         }
     }
 
-    public String deleteBook(Long bookId){
-       Boolean result= bookDAO.deleteBook(bookId);
-       if(result){
-           return "Requested book is deleted sucssefully";
-       }else{
-           return "Requested book is not deleted ";
-       }
+    public String deleteBook(Long bookId) {
+        Boolean result = bookDAO.deleteBook(bookId);
+        if (result) {
+            return "Requested book is deleted successfully";
+        } else {
+            return "Requested book is not deleted";
+        }
     }
 
-    public String updateBook(Long bookId, String nameToBeUpdated){
+    public String updateBook(Long bookId, String nameToBeUpdated) {
         Book bookToBeUpdated = bookDAO.getBook(bookId);
-        if(bookToBeUpdated!=null){
+        if (bookToBeUpdated != null) {
             bookToBeUpdated.setBookName(nameToBeUpdated);
-            bookDAO.updateBook(bookToBeUpdated);
-
+//            bookDAO.updateBook(bookToBeUpdated);
             return "book is updated successfully";
 
-        }else {
+        } else {
             return "book is not updated ";
         }
 

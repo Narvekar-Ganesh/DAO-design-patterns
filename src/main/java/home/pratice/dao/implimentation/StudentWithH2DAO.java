@@ -28,31 +28,27 @@ public class StudentWithH2DAO implements StudentDAO {
         }
     }
 
-    public Boolean deleteStudent(Long studentNumber){
+    public Boolean deleteStudent(Long studentNumber) {
         Session session = DatabaseHibernateUtility.getSessionFactory().openSession();
         session.beginTransaction();
         Student studentFromDatabase = session.byId(Student.class).load((Long) studentNumber);
-        if(studentFromDatabase!=null){
+        if (studentFromDatabase != null) {
             session.delete(studentFromDatabase);
             session.getTransaction().commit();
             return true;
-        }else {
+        } else {
             return false;
         }
     }
 
     @Override
     public void updateStudent(Student student) {
-        Session session= DatabaseHibernateUtility.getSessionFactory().openSession();
+        Session session = DatabaseHibernateUtility.getSessionFactory().openSession();
         session.beginTransaction();
         session.update(student);
         session.getTransaction().commit();
-
     }
-
-
-
-    }
+}
 
 
 

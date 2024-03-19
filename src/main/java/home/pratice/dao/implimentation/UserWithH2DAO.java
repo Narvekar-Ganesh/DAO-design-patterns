@@ -1,7 +1,6 @@
 package home.pratice.dao.implimentation;
 
 import home.pratice.design.pattern.dao.UserDAO;
-import home.pratice.domain.Book;
 import home.pratice.domain.User;
 import home.pratice.utillities.DatabaseHibernateUtility;
 import org.hibernate.Session;
@@ -25,29 +24,28 @@ public class UserWithH2DAO implements UserDAO {
         Session session = DatabaseHibernateUtility.getSessionFactory().openSession();
         session.beginTransaction();
 
-        Serializable savedId =session.save(user);
-        Long primaryKey = (Long)savedId;
+        Serializable savedId = session.save(user);
+        Long primaryKey = (Long) savedId;
         session.getTransaction().commit();
-        if (primaryKey!=null){
+        if (primaryKey != null) {
             return true;
-        }else{
+        } else {
             return false;
         }
     }
 
-    public Boolean deleteUser(Long userId){
+    public Boolean deleteUser(Long userId) {
         Session session = DatabaseHibernateUtility.getSessionFactory().openSession();
         session.beginTransaction();
         User userFromDatabase = session.byId(User.class).load((Long) userId);
-        if(userFromDatabase!=null){
+        if (userFromDatabase != null) {
             session.delete(userFromDatabase);
             session.getTransaction().commit();
             return true;
-        }else {
+        } else {
             return false;
 
         }
-
     }
 
     @Override
@@ -56,8 +54,5 @@ public class UserWithH2DAO implements UserDAO {
         session.beginTransaction();
         session.update(user);
         session.getTransaction().commit();
-
     }
-
-
 }

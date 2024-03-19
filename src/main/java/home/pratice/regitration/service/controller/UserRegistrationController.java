@@ -19,40 +19,34 @@ public class UserRegistrationController {
     }
 
 
-    public String  registerUser(int userId, String userName) {
-        String response =userRegistrationService.registerUser(userId, userName);
+    public String registerUser(int userId, String userName) {
+        String response = userRegistrationService.registerUser(userId, userName);
         return response;
     }
-    public static void deleteGivenUser(){
-        UserRegistrationController controller=new UserRegistrationController();
+
+    public static void deleteGivenUser() {
+        UserRegistrationController controller = new UserRegistrationController();
         System.out.println(controller.userRegistrationService.deleteUser(14L));
     }
 
-
-
     public static void main(String[] args) {
-
-
 //         deleteGivenUser();
-
-
         doRegistration();
-
     }
 
     private static void doRegistration() {
         UserRegistrationController controller = new UserRegistrationController();
-        List<User> users= new ArrayList<>();
+        List<User> users = new ArrayList<>();
 
-        for (int i=0;i<=10;i++){
+        for (int i = 0; i <= 10; i++) {
             User user = new User();
-            user.setUserName("User-Name"+i+10);
-            user.setUserId(i+10);
+            user.setUserName("User-Name" + i + 10);
+            user.setUserId(i + 10);
             users.add(user);
         }
 
-        for(User eachUser:users){
-           String responase= controller.registerUser(eachUser.getUserId(), eachUser.getUserName());
+        for (User eachUser : users) {
+            String responase = controller.registerUser(eachUser.getUserId(), eachUser.getUserName());
             System.out.println(responase);
         }
     }
