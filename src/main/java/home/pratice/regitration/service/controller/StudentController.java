@@ -42,8 +42,8 @@ public class StudentController {
      */
     public static void main(String[] args) {
 //        updateGivenBook(27L,"viraj" );
-//        deleteGivenStudent(15L);
-        saveMultipleStudents();
+        deleteGivenStudent(87L);
+//        saveMultipleStudents();
     }
 
     private static void updateGivenBook(Long studentId, String name) {
@@ -55,9 +55,9 @@ public class StudentController {
         StudentController controller = new StudentController();
         List<Student> students = new ArrayList<>();
 
-        for (int i = 0; i <= 10; i++) {
+        for (int i = 0; i <= 1; i++) {
             Student student = new Student();
-            student.setName("Book-Name-" + i + 10);
+            student.setName("Student-name-with-Library-card-" + i + 10);
             student.setRollNumber(i + 10);
             students.add(student);
         }

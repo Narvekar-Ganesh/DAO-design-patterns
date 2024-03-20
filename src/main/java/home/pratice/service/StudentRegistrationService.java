@@ -2,6 +2,7 @@ package home.pratice.service;
 
 import home.pratice.dao.implimentation.StudentWithH2DAO;
 import home.pratice.design.pattern.dao.StudentDAO;
+import home.pratice.domain.LibraryCard;
 import home.pratice.domain.Student;
 
 public class StudentRegistrationService {
@@ -18,6 +19,9 @@ public class StudentRegistrationService {
 
     public String registerStudent(int rollNumber, String name) {
         Student student = prepareStudent(rollNumber, name);
+        LibraryCard libraryCard = prepareLibraryCard(name);
+        student.setLibraryCard(libraryCard);
+
         Boolean result = studentDAO.saveStudent(student);
         if (result) {
             return "Student with student name:" + name + "is registered succssefully";
@@ -40,6 +44,13 @@ public class StudentRegistrationService {
         student.setRollNumber(rollNumber);
         student.setName(name);
         return student;
+    }
+
+    private LibraryCard prepareLibraryCard(String studentName) {
+        LibraryCard libraryCard = new LibraryCard();
+        libraryCard.setCardNumber(9999);
+        libraryCard.setCardName(studentName);
+        return  libraryCard;
     }
 
     public String updateStudent(Long id, String nameToBeUpdate) {

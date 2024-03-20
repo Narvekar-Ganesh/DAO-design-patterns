@@ -52,7 +52,7 @@ public class BookWithH2DAO implements BookDAO {
     public void updateBook(Book book) {
         Session session = DatabaseHibernateUtility.getSessionFactory().openSession();
         session.beginTransaction();
-        session.update(book);
+//        session.update(book);
         session.getTransaction().commit();
     }
 }

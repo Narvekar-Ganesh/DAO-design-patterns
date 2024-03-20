@@ -14,6 +14,17 @@ public class Student {
     @Column
     private String name;
 
+    @OneToOne(cascade = CascadeType.ALL)
+    private LibraryCard libraryCard;
+
+    public LibraryCard getLibraryCard() {
+        return libraryCard;
+    }
+
+    public void setLibraryCard(LibraryCard libraryCard) {
+        this.libraryCard = libraryCard;
+    }
+
     public Long getStudentId() {
         return studentId;
     }
