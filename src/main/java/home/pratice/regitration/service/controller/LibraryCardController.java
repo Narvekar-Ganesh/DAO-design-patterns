@@ -36,6 +36,7 @@ public class LibraryCardController {
         System.out.println(controller.deleteLibraryCard(44L));
     }
 
+
     private static void deRegistration() {
         LibraryCardController controller = new LibraryCardController();
         List<LibraryCard> libraryCards = new ArrayList<>();

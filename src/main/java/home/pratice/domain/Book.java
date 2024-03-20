@@ -13,6 +13,40 @@ public class Book {
 
     @Column
     private String bookName;
+    @Column
+    private String autherName;
+    @Column
+    private String isbnNumber;
+    @Column
+    private int price;
+
+
+    public String getAutherName() {
+        return autherName;
+    }
+
+    public void setAutherName(String autherName) {
+        this.autherName = autherName;
+    }
+
+    public String getIsbnNumber() {
+        return isbnNumber;
+    }
+
+    public void setIsbnNumber(String isbnNumber) {
+        this.isbnNumber = isbnNumber;
+    }
+
+    public void setPrice(int price) {
+        this.price = price;
+    }
+
+
+
+    public int getPrice() {
+        return price;
+    }
+
 
     public int getBookNumber() {
         return bookNumber;
@@ -44,6 +78,9 @@ public class Book {
                 "bookId=" + bookId +
                 ", bookNumber=" + bookNumber +
                 ", bookName='" + bookName + '\'' +
+                ", autherName='" + autherName + '\'' +
+                ", isbnNumber=" + isbnNumber +
+                ", price=" + price +
                 '}';
     }
 }

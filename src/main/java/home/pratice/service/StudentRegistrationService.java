@@ -2,6 +2,7 @@ package home.pratice.service;
 
 import home.pratice.dao.implimentation.StudentWithH2DAO;
 import home.pratice.design.pattern.dao.StudentDAO;
+import home.pratice.domain.Book;
 import home.pratice.domain.LibraryCard;
 import home.pratice.domain.Student;
 
@@ -17,9 +18,11 @@ public class StudentRegistrationService {
         return student;
     }
 
-    public String registerStudent(int rollNumber, String name) {
-        Student student = prepareStudent(rollNumber, name);
+    public String registerStudent(int rollNumber, String name, String gender, String addresLine1, String addresLine2) {
+        Student student = prepareStudent(rollNumber, name, gender, addresLine1, addresLine2);
         LibraryCard libraryCard = prepareLibraryCard(name);
+        Book book = prapareBook(rollNumber, name);
+        student.setBook(book);
         student.setLibraryCard(libraryCard);
 
         Boolean result = studentDAO.saveStudent(student);
@@ -30,6 +33,11 @@ public class StudentRegistrationService {
         }
     }
 
+//    public String registerSingleStudent(int rollNumber,String   name ){
+//        Student student = saveSingleStudent(rollNumber,+name);
+//    }
+
+
     public String deleteStudent(Long studentId) {
         Boolean result = studentDAO.deleteStudent(studentId);
         if (result) {
@@ -39,10 +47,13 @@ public class StudentRegistrationService {
         }
     }
 
-    private Student prepareStudent(int rollNumber, String name) {
+    private Student prepareStudent(int rollNumber, String name, String gender, String addresLine1, String addresLine2) {
         Student student = new Student();
         student.setRollNumber(rollNumber);
         student.setName(name);
+        student.setGender(gender);
+        student.setAddresLine1(addresLine1);
+        student.setAddresLine2(addresLine2);
         return student;
     }
 
@@ -50,7 +61,14 @@ public class StudentRegistrationService {
         LibraryCard libraryCard = new LibraryCard();
         libraryCard.setCardNumber(9999);
         libraryCard.setCardName(studentName);
-        return  libraryCard;
+        return libraryCard;
+    }
+
+    private Book prapareBook(int rollNumber, String name) {
+        Book book = new Book();
+        book.setBookNumber(456);
+        book.setBookName(name);
+        return book;
     }
 
     public String updateStudent(Long id, String nameToBeUpdate) {
@@ -63,6 +81,8 @@ public class StudentRegistrationService {
             return "Student is not updated";
         }
     }
+
+
 }
 
 

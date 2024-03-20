@@ -17,7 +17,7 @@ public class BookWithH2DAO implements BookDAO {
     }
 
     @Override
-    public Boolean saveBook(int bookId, String bookName) {
+    public Boolean saveBook(int bookId, String bookName,String autherName, String  isbnNumber) {
         Book book = new Book();
         book.setBookNumber(bookId);
         book.setBookName(bookName);

@@ -18,8 +18,8 @@ public class BookController {
         return book;
     }
 
-    public String registerBook(int bookId, String name) {
-        String result = bookRegistrationService.registerBook(bookId, name);
+    public String registerBook(int bookId, String name,String autherName, String  isbnNumber) {
+        String result = bookRegistrationService.registerBook(bookId, name, autherName,isbnNumber);
         return result;
     }
 
@@ -32,9 +32,9 @@ public class BookController {
     }
 
     public static void main(String[] args) {
-//        doBookRegistration();
+        doBookRegistration();
 //        deleteGivenBook();
-        updateGivenBook(54L, "Sahil");
+//        updateGivenBook(54L, "Sahil");
     }
 
     private static void updateGivenBook(Long bookId, String bookName) {
@@ -55,10 +55,12 @@ public class BookController {
             book = new Book();
             book.setBookName("Book-Name-" + i + 10);
             book.setBookNumber(i + 10);
+            book.setAutherName("Auther_name-"+i+10);
+            book.getIsbnNumber();
             books.add(book);
         }
         for (Book bookToBeRegistered : books) {
-            String response = controller.registerBook(bookToBeRegistered.getBookNumber(), bookToBeRegistered.getBookName());
+            String response = controller.registerBook(bookToBeRegistered.getBookNumber(), bookToBeRegistered.getBookName(),bookToBeRegistered.getAutherName(),bookToBeRegistered.getIsbnNumber());
             System.out.println(response);
         }
     }

@@ -17,8 +17,8 @@ public class StudentController {
         return studentRegistrationService.getStudent(studentId);
     }
 
-    public void registerStudent(int rollNumber, String name) {
-        studentRegistrationService.registerStudent(rollNumber, name);
+    public void registerStudent(int rollNumber, String name,String gender,String addresLine1,String addresLine2) {
+        studentRegistrationService.registerStudent(rollNumber, name,gender,addresLine1,addresLine2);
     }
 
     public String deleteStudent(Long studentId) {
@@ -42,13 +42,19 @@ public class StudentController {
      */
     public static void main(String[] args) {
 //        updateGivenBook(27L,"viraj" );
-        deleteGivenStudent(87L);
-//        saveMultipleStudents();
+//        deleteGivenStudent(87L);
+        saveMultipleStudents();
+//        saveSingleStudent(45,"Shourya","Mail","flat no H-405","Balaji Symphony");
     }
 
     private static void updateGivenBook(Long studentId, String name) {
         StudentController controller = new StudentController();
         controller.updateStudent(studentId, name);
+    }
+
+    public static void saveSingleStudent(int number ,String name,String gender,String addresLine1,String addresLine2){
+        StudentController controller = new StudentController();
+        controller.registerStudent(number,name,gender,addresLine1,addresLine2);
     }
 
     private static void saveMultipleStudents() {
@@ -59,11 +65,14 @@ public class StudentController {
             Student student = new Student();
             student.setName("Student-name-with-Library-card-" + i + 10);
             student.setRollNumber(i + 10);
+            student.setGender("Male");
+            student.setAddresLine1("harmonic");
+            student.setAddresLine2("Room no - 405");
             students.add(student);
         }
 
         for (Student eachStudent : students) {
-            controller.registerStudent(eachStudent.getRollNumber(), eachStudent.getName());
+            controller.registerStudent(eachStudent.getRollNumber(), eachStudent.getName(),eachStudent.getGender(),eachStudent.getAddresLine1(),eachStudent.getAddresLine2());
 
         }
     }

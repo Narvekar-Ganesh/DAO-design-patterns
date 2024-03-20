@@ -5,7 +5,7 @@ import home.pratice.domain.Book;
 public interface BookDAO {
     Book getBook(Long bookId);
 
-    Boolean saveBook(int bookId, String bookName);
+    Boolean saveBook(int bookId, String bookName, String autherName, String  isbnNumber);
 
     Boolean deleteBook(Long bookId);
 

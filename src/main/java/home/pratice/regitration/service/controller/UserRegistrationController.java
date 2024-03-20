@@ -31,8 +31,10 @@ public class UserRegistrationController {
 
     public static void main(String[] args) {
 //         deleteGivenUser();
-        doRegistration();
+//        doRegistration();
+
     }
+
 
     private static void doRegistration() {
         UserRegistrationController controller = new UserRegistrationController();
