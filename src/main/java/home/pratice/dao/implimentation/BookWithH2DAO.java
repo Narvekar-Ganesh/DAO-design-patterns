@@ -5,7 +5,9 @@ import home.pratice.domain.Book;
 import home.pratice.utillities.DatabaseHibernateUtility;
 import org.hibernate.Session;
 
+import javax.persistence.Query;
 import java.io.Serializable;
+import java.util.List;
 
 public class BookWithH2DAO implements BookDAO {
     public Book getBook(Long bookId) {
@@ -47,12 +49,29 @@ public class BookWithH2DAO implements BookDAO {
         }
     }
 
-
     @Override
     public void updateBook(Book book) {
         Session session = DatabaseHibernateUtility.getSessionFactory().openSession();
         session.beginTransaction();
 //        session.update(book);
         session.getTransaction().commit();
+    }
+
+    public void getBookByBookName(String bookName){
+        Session session = DatabaseHibernateUtility.getSessionFactory().openSession();
+        Query query =  session.createNamedQuery("getBooksByBookName", Book.class);
+        query.setParameter("bookName",bookName);
+        List resultList = query.getResultList();
+        List<Book> books = (List<Book>) resultList;
+        System.out.println("books from database using named query : " + books);
+    }
+
+    public void getBookByAuthorName(String authorName){
+        Session session = DatabaseHibernateUtility.getSessionFactory().openSession();
+        Query query =  session.createNamedQuery("getBooksByAuthorName", Book.class);
+        query.setParameter("autherName",authorName);
+        List resultList = query.getResultList();
+        List<Book> books = (List<Book>) resultList;
+        System.out.println("books from database using named query : " + books);
     }
 }

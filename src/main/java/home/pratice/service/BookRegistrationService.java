@@ -51,4 +51,12 @@ public class BookRegistrationService {
 //
 //        return "book is updated successfully";
     }
+
+    public void getBooksByAuthorName(String authorName){
+        bookDAO.getBookByAuthorName(authorName);
+    }
+
+    public void getBookByBookName(String bookName){
+        bookDAO.getBookByBookName(bookName);
+    }
 }

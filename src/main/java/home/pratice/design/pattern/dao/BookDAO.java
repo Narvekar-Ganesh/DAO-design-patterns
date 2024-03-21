@@ -10,4 +10,9 @@ public interface BookDAO {
     Boolean deleteBook(Long bookId);
 
     void updateBook(Book book);
+
+    public void getBookByAuthorName(String authorName);
+
+
+    void getBookByBookName(String bookName);
 }

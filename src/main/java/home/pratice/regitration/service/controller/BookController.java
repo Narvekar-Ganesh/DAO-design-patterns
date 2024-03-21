@@ -18,8 +18,8 @@ public class BookController {
         return book;
     }
 
-    public String registerBook(int bookId, String name,String autherName, String  isbnNumber) {
-        String result = bookRegistrationService.registerBook(bookId, name, autherName,isbnNumber);
+    public String registerBook(int bookId, String name, String autherName, String isbnNumber) {
+        String result = bookRegistrationService.registerBook(bookId, name, autherName, isbnNumber);
         return result;
     }
 
@@ -31,11 +31,34 @@ public class BookController {
         return bookRegistrationService.updateBook(bookId, name);
     }
 
+    public void getBookByAuthorName(String authorName) {
+        bookRegistrationService.getBooksByAuthorName(authorName);
+    }
+
+
+    public void getBookByBookName(String bookName){
+        bookRegistrationService.getBookByBookName(bookName);
+    }
+
     public static void main(String[] args) {
-        doBookRegistration();
+//        doBookRegistration();
 //        deleteGivenBook();
 //        updateGivenBook(54L, "Sahil");
+        getBookByAuthorName();
+//        getBookByBookName();
+
     }
+
+    private static void getBookByAuthorName(){
+        BookController bookController = new BookController();
+        bookController.getBookByAuthorName("ABC");
+    }
+    private static void getBookByBookName(){
+        BookController bookController = new BookController();
+        bookController.getBookByBookName("Shourya");
+    }
+
+
 
     private static void updateGivenBook(Long bookId, String bookName) {
         BookController controller = new BookController();
@@ -55,12 +78,12 @@ public class BookController {
             book = new Book();
             book.setBookName("Book-Name-" + i + 10);
             book.setBookNumber(i + 10);
-            book.setAutherName("Auther_name-"+i+10);
+            book.setAutherName("Auther_name-" + i + 10);
             book.getIsbnNumber();
             books.add(book);
         }
         for (Book bookToBeRegistered : books) {
-            String response = controller.registerBook(bookToBeRegistered.getBookNumber(), bookToBeRegistered.getBookName(),bookToBeRegistered.getAutherName(),bookToBeRegistered.getIsbnNumber());
+            String response = controller.registerBook(bookToBeRegistered.getBookNumber(), bookToBeRegistered.getBookName(), bookToBeRegistered.getAutherName(), bookToBeRegistered.getIsbnNumber());
             System.out.println(response);
         }
     }
