@@ -35,7 +35,6 @@ public class BookController {
         bookRegistrationService.getBooksByAuthorName(authorName);
     }
 
-
     public void getBookByBookName(String bookName) {
         bookRegistrationService.getBookByBookName(bookName);
     }
