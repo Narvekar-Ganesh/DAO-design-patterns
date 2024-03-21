@@ -2,6 +2,8 @@ package home.pratice.design.pattern.dao;
 
 import home.pratice.domain.Book;
 
+import java.util.List;
+
 public interface BookDAO {
     Book getBook(Long bookId);
 
@@ -11,8 +13,8 @@ public interface BookDAO {
 
     void updateBook(Book book);
 
-    public void getBookByAuthorName(String authorName);
+    List<Book> getBookByAuthorName(String authorName);
 
 
-    void getBookByBookName(String bookName);
+     List<Book> getBookByBookName(String bookName);
 }

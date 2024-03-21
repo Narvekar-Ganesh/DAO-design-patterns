@@ -31,12 +31,13 @@ public class BookController {
         return bookRegistrationService.updateBook(bookId, name);
     }
 
-    public void getBookByAuthorName(String authorName) {
-        bookRegistrationService.getBooksByAuthorName(authorName);
+    public List<Book> getBookByAuthorName(String authorName) {
+        return bookRegistrationService.getBooksByAuthorName(authorName);
     }
 
-    public void getBookByBookName(String bookName) {
-        bookRegistrationService.getBookByBookName(bookName);
+    public List<Book> getBooksByBookName(String bookName) {
+        return bookRegistrationService.getBookByBookName(bookName);
+
     }
 
     public static void main(String[] args) {
@@ -44,18 +45,38 @@ public class BookController {
 //        deleteGivenBook();
 //        updateGivenBook(54L, "Sahil");
         getBookByAuthorName();
-//        getBookByBookName();
+//        getBooksByBookName();
 
     }
 
     private static void getBookByAuthorName() {
         BookController bookController = new BookController();
-        bookController.getBookByAuthorName("ABC");
+        String bookName = "SHA";
+        bookController.getBookByAuthorName("bookName");
+        List<Book> books = bookController.getBookByAuthorName(bookName);
+        for (Book book : books) {
+            System.out.println("Each Auther's details are" + book);
+        }
+        if (books.isEmpty()) {
+            System.out.println("Auther not found in databas");
+        } else {
+            System.out.println(books.size() + " Auther found in database for Book" + bookName);
+        }
     }
 
-    private static void getBookByBookName() {
+    private static void getBooksByBookName() {
+        String author = "Siddhu";
         BookController bookController = new BookController();
-        bookController.getBookByBookName("Shourya");
+        List<Book> books = bookController.getBooksByBookName(author);
+
+        for (Book book : books) {
+            System.out.println(" Each book's details are :  " + book);
+        }
+        if (books.isEmpty()) {
+            System.out.println("books not found in database");
+        } else {
+            System.out.println(books.size() + "  books found in database for author :  " + author);
+        }
     }
 
 
