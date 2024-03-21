@@ -19,7 +19,7 @@ public class BookWithH2DAO implements BookDAO {
     }
 
     @Override
-    public Boolean saveBook(int bookId, String bookName,String autherName, String  isbnNumber) {
+    public Boolean saveBook(int bookId, String bookName, String autherName, String isbnNumber) {
         Book book = new Book();
         book.setBookNumber(bookId);
         book.setBookName(bookName);
@@ -57,19 +57,19 @@ public class BookWithH2DAO implements BookDAO {
         session.getTransaction().commit();
     }
 
-    public void getBookByBookName(String bookName){
+    public void getBookByBookName(String bookName) {
         Session session = DatabaseHibernateUtility.getSessionFactory().openSession();
-        Query query =  session.createNamedQuery("getBooksByBookName", Book.class);
-        query.setParameter("bookName",bookName);
+        Query query = session.createNamedQuery("getBooksByBookName", Book.class);
+        query.setParameter("bookName", bookName);
         List resultList = query.getResultList();
         List<Book> books = (List<Book>) resultList;
         System.out.println("books from database using named query : " + books);
     }
 
-    public void getBookByAuthorName(String authorName){
+    public void getBookByAuthorName(String authorName) {
         Session session = DatabaseHibernateUtility.getSessionFactory().openSession();
-        Query query =  session.createNamedQuery("getBooksByAuthorName", Book.class);
-        query.setParameter("autherName",authorName);
+        Query query = session.createNamedQuery("getBooksByAuthorName", Book.class);
+        query.setParameter("autherName", authorName);
         List resultList = query.getResultList();
         List<Book> books = (List<Book>) resultList;
         System.out.println("books from database using named query : " + books);

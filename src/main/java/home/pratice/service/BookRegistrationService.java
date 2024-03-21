@@ -18,7 +18,7 @@ public class BookRegistrationService {
     }
 
     public String registerBook(int bookId, String name, String autherName, String isbnNumber) {
-        Boolean result = bookDAO.saveBook(bookId, name, autherName,isbnNumber  );
+        Boolean result = bookDAO.saveBook(bookId, name, autherName, isbnNumber);
         if (result) {
             return "Book with book name:" + name + "is registered succssefully";
         } else {
@@ -52,11 +52,11 @@ public class BookRegistrationService {
 //        return "book is updated successfully";
     }
 
-    public void getBooksByAuthorName(String authorName){
+    public void getBooksByAuthorName(String authorName) {
         bookDAO.getBookByAuthorName(authorName);
     }
 
-    public void getBookByBookName(String bookName){
+    public void getBookByBookName(String bookName) {
         bookDAO.getBookByBookName(bookName);
     }
 }

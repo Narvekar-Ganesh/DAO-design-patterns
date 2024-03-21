@@ -36,7 +36,7 @@ public class BookController {
     }
 
 
-    public void getBookByBookName(String bookName){
+    public void getBookByBookName(String bookName) {
         bookRegistrationService.getBookByBookName(bookName);
     }
 
@@ -49,15 +49,15 @@ public class BookController {
 
     }
 
-    private static void getBookByAuthorName(){
+    private static void getBookByAuthorName() {
         BookController bookController = new BookController();
         bookController.getBookByAuthorName("ABC");
     }
-    private static void getBookByBookName(){
+
+    private static void getBookByBookName() {
         BookController bookController = new BookController();
         bookController.getBookByBookName("Shourya");
     }
-
 
 
     private static void updateGivenBook(Long bookId, String bookName) {
