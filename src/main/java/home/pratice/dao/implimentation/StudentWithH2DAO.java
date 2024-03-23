@@ -9,9 +9,10 @@ import java.io.Serializable;
 
 public class StudentWithH2DAO implements StudentDAO {
     public Student getStudent(Long studentId) {
-        Student student = new Student();
-        student.setRollNumber(000);
-        student.setName("H2");
+        Session session = DatabaseHibernateUtility.getSessionFactory().openSession();
+        session.beginTransaction();
+        Student student = session.byId(Student.class).load(studentId);
+        session.getTransaction().commit();
         return student;
     }
 

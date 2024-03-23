@@ -4,7 +4,12 @@ import home.pratice.dao.implimentation.StudentWithH2DAO;
 import home.pratice.design.pattern.dao.StudentDAO;
 import home.pratice.domain.Book;
 import home.pratice.domain.LibraryCard;
+import home.pratice.domain.MobileNumber;
 import home.pratice.domain.Student;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 public class StudentRegistrationService {
     private StudentDAO studentDAO; //has-a relationship
@@ -18,12 +23,15 @@ public class StudentRegistrationService {
         return student;
     }
 
-    public String registerStudent(int rollNumber, String name, String gender, String addresLine1, String addresLine2) {
+    public String registerStudent(int rollNumber, String name, String gender, String addresLine1, String addresLine2, String mobileNumber1, String mobileNumber2) {
         Student student = prepareStudent(rollNumber, name, gender, addresLine1, addresLine2);
         LibraryCard libraryCard = prepareLibraryCard(name);
         Book book = prapareBook(rollNumber, name);
+        List<MobileNumber> mobileNumbers = prepareMobileNumbers(mobileNumber1, mobileNumber2);
+
         student.setBook(book);
         student.setLibraryCard(libraryCard);
+        student.setMobileNumbers(mobileNumbers);
 
         Boolean result = studentDAO.saveStudent(student);
         if (result) {
@@ -31,6 +39,20 @@ public class StudentRegistrationService {
         } else {
             return "Student with student name:" + name + "is not registered";
         }
+    }
+
+    private List<MobileNumber> prepareMobileNumbers(String... mobileNumbersAsString) { //varargs arguments
+        List<MobileNumber> mobileNumbers = new ArrayList<>();
+
+        for(String eachMobileNumberAsString : mobileNumbersAsString){
+            MobileNumber mobileNumber = new MobileNumber();
+            mobileNumber.setNumber(eachMobileNumberAsString);
+            mobileNumber.setCountryCode("+91");
+
+            mobileNumbers.add(mobileNumber);
+        }
+
+        return mobileNumbers;
     }
 
 //    public String registerSingleStudent(int rollNumber,String   name ){

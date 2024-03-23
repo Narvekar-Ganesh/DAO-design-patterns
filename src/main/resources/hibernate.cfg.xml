@@ -22,6 +22,7 @@
         <mapping class="home.pratice.domain.Book" />
         <mapping class="home.pratice.domain.User" />
         <mapping class="home.pratice.domain.LibraryCard" />
+        <mapping class="home.pratice.domain.MobileNumber" />
     </session-factory>
 
 

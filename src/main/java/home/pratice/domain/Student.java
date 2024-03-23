@@ -1,6 +1,7 @@
 package home.pratice.domain;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 public class Student {
@@ -53,6 +54,24 @@ public class Student {
     @OneToOne(cascade = CascadeType.ALL)
     private Book book;
 
+    @Override
+    public String toString() {
+        return "Student{" +
+                "studentId=" + studentId +
+                ", rollNumber=" + rollNumber +
+                ", name='" + name + '\'' +
+                ", gender='" + gender + '\'' +
+                ", addresLine1='" + addresLine1 + '\'' +
+                ", addresLine2='" + addresLine2 + '\'' +
+                ", libraryCard=" + libraryCard +
+                ", book=" + book +
+                ", mobileNumbers=" + mobileNumbers +
+                '}';
+    }
+
+    @OneToMany(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
+    private List<MobileNumber> mobileNumbers;
+
     public Book getBook() {
         return book;
     }
@@ -92,17 +111,12 @@ public class Student {
         this.name = name;
     }
 
-    @Override
-    public String toString() {
-        return "Student{" +
-                "studentId=" + studentId +
-                ", rollNumber=" + rollNumber +
-                ", name='" + name + '\'' +
-                ", gender='" + gender + '\'' +
-                ", addresLine1='" + addresLine1 + '\'' +
-                ", addresLine2='" + addresLine2 + '\'' +
-                ", libraryCard=" + libraryCard +
-                ", book=" + book +
-                '}';
+    public List<MobileNumber> getMobileNumbers() {
+        return mobileNumbers;
     }
+
+    public void setMobileNumbers(List<MobileNumber> mobileNumbers) {
+        this.mobileNumbers = mobileNumbers;
+    }
+
 }

@@ -17,8 +17,8 @@ public class StudentController {
         return studentRegistrationService.getStudent(studentId);
     }
 
-    public void registerStudent(int rollNumber, String name,String gender,String addresLine1,String addresLine2) {
-        studentRegistrationService.registerStudent(rollNumber, name,gender,addresLine1,addresLine2);
+    public void registerStudent(int rollNumber, String name, String gender, String addresLine1, String addresLine2 , String mobileNumber1, String mobileNumber2) {
+        studentRegistrationService.registerStudent(rollNumber, name, gender, addresLine1, addresLine2, mobileNumber1,mobileNumber2);
     }
 
     public String deleteStudent(Long studentId) {
@@ -43,18 +43,24 @@ public class StudentController {
     public static void main(String[] args) {
 //        updateGivenBook(27L,"viraj" );
 //        deleteGivenStudent(87L);
-        saveMultipleStudents();
-//        saveSingleStudent(45,"Shourya","Mail","flat no H-405","Balaji Symphony");
+//        saveMultipleStudents();
+//        saveSingleStudent(999, "ASDFGH", "Mail", "flat no H-999", "Balaji Symphony", "111222111222", "3334443334443");
+        getStudentById(130L);
     }
 
+    private static void getStudentById(Long id){
+        StudentController controller = new StudentController();
+        Student student = controller.getDetailsOfStudent(id);
+        System.out.println("details of student are - " + student);
+    }
     private static void updateGivenBook(Long studentId, String name) {
         StudentController controller = new StudentController();
         controller.updateStudent(studentId, name);
     }
 
-    public static void saveSingleStudent(int number ,String name,String gender,String addresLine1,String addresLine2){
+    public static void saveSingleStudent(int number, String name, String gender, String addresLine1, String addresLine2, String mobileNumber1, String mobileNumber2) {
         StudentController controller = new StudentController();
-        controller.registerStudent(number,name,gender,addresLine1,addresLine2);
+        controller.registerStudent(number, name, gender, addresLine1, addresLine2, mobileNumber1, mobileNumber2);
     }
 
     private static void saveMultipleStudents() {
@@ -72,7 +78,7 @@ public class StudentController {
         }
 
         for (Student eachStudent : students) {
-            controller.registerStudent(eachStudent.getRollNumber(), eachStudent.getName(),eachStudent.getGender(),eachStudent.getAddresLine1(),eachStudent.getAddresLine2());
+            controller.registerStudent(eachStudent.getRollNumber(), eachStudent.getName(), eachStudent.getGender(), eachStudent.getAddresLine1(), eachStudent.getAddresLine2(),null,null);
 
         }
     }
