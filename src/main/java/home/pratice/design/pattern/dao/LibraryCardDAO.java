@@ -6,4 +6,6 @@ public interface LibraryCardDAO {
     LibraryCard getLibraryCard(Long cardId);
 
     Boolean saveLibraryCard(int cardNumber, String cardName);
+
+    Boolean deleteLibraryCard(Long libraryCardId);
 }

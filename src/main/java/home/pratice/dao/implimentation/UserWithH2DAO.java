@@ -24,13 +24,35 @@ public class UserWithH2DAO implements UserDAO {
         Session session = DatabaseHibernateUtility.getSessionFactory().openSession();
         session.beginTransaction();
 
-        Serializable savedId =session.save(userId);
-        Long primaryKey = (Long)savedId;
+        Serializable savedId = session.save(user);
+        Long primaryKey = (Long) savedId;
         session.getTransaction().commit();
-        if (primaryKey!=null){
+        if (primaryKey != null) {
             return true;
-        }else{
+        } else {
             return false;
         }
+    }
+
+    public Boolean deleteUser(Long userId) {
+        Session session = DatabaseHibernateUtility.getSessionFactory().openSession();
+        session.beginTransaction();
+        User userFromDatabase = session.byId(User.class).load((Long) userId);
+        if (userFromDatabase != null) {
+            session.delete(userFromDatabase);
+            session.getTransaction().commit();
+            return true;
+        } else {
+            return false;
+
+        }
+    }
+
+    @Override
+    public void updateUser(User user) {
+        Session session = DatabaseHibernateUtility.getSessionFactory().openSession();
+        session.beginTransaction();
+        session.update(user);
+        session.getTransaction().commit();
     }
 }

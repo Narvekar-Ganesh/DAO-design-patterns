@@ -11,13 +11,9 @@ public class User {
     @Column
     private int userId;
 
+
+
     private String userName;
-
-    @Column
-
-    public String getUserName() {
-        return userName;
-    }
 
     public int getUserId() {
         return userId;
@@ -26,6 +22,13 @@ public class User {
     public void setUserId(int userId) {
         this.userId = userId;
     }
+
+    @Column
+
+    public String getUserName() {
+        return userName;
+    }
+
 
     public void setUserName(String userName) {
         this.userName = userName;
@@ -48,3 +51,5 @@ public class User {
                 '}';
     }
 }
+
+

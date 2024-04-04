@@ -1,6 +1,7 @@
 package home.pratice.domain;
 
 import javax.persistence.*;
+import java.util.Objects;
 
 @Entity
 public class LibraryCard {
@@ -36,6 +37,19 @@ public class LibraryCard {
 
     public Long getId() {
         return id;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        LibraryCard that = (LibraryCard) o;
+        return cardNumber == that.cardNumber && Objects.equals(id, that.id) && Objects.equals(cardName, that.cardName);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, cardNumber, cardName);
     }
 
     @Override

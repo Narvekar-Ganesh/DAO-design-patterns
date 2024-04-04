@@ -3,6 +3,15 @@ package home.pratice.domain;
 import javax.persistence.*;
 
 @Entity
+@NamedQueries({
+        @NamedQuery(name = "getBooksByAuthorName",
+                    query = "FROM Book book " +
+                            "WHERE book.autherName = :autherName"),
+        @NamedQuery(name="getBooksByBookName",
+                    query = "FROM Book book " +
+                "WHERE book.bookName = :bookName")
+
+})
 public class Book {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -13,6 +22,37 @@ public class Book {
 
     @Column
     private String bookName;
+    @Column
+    private String autherName;
+    @Column
+    private String isbnNumber;
+    @Column
+    private Integer price;
+
+
+    public String getAutherName() {
+        return autherName;
+    }
+
+    public void setAutherName(String autherName) {
+        this.autherName = autherName;
+    }
+
+    public String getIsbnNumber() {
+        return isbnNumber;
+    }
+
+    public void setIsbnNumber(String isbnNumber) {
+        this.isbnNumber = isbnNumber;
+    }
+
+    public Integer getPrice() {
+        return price;
+    }
+
+    public void setPrice(Integer price) {
+        this.price = price;
+    }
 
     public int getBookNumber() {
         return bookNumber;
@@ -44,6 +84,9 @@ public class Book {
                 "bookId=" + bookId +
                 ", bookNumber=" + bookNumber +
                 ", bookName='" + bookName + '\'' +
+                ", autherName='" + autherName + '\'' +
+                ", isbnNumber=" + isbnNumber +
+                ", price=" + price +
                 '}';
     }
 }

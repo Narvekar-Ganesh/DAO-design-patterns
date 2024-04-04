@@ -31,4 +31,18 @@ public class LibraryCardWithH2DAO implements LibraryCardDAO {
             return false;
         }
     }
+
+    public Boolean deleteLibraryCard(Long libraryCardID) {
+        Session session = DatabaseHibernateUtility.getSessionFactory().openSession();
+        session.beginTransaction();
+        LibraryCard libraryCardFromDatabase = session.byId(LibraryCard.class).load((Long) libraryCardID);
+        if (libraryCardFromDatabase != null) {
+            session.delete(libraryCardFromDatabase);
+            session.getTransaction().commit();
+            return true;
+        } else {
+            return false;
+        }
+
+    }
 }

@@ -8,20 +8,18 @@ import org.hibernate.Session;
 import java.io.Serializable;
 
 public class StudentWithH2DAO implements StudentDAO {
-    public Student getStudent(int rollNumber) {
-        Student student = new Student();
-        student.setRollNumber(000);
-        student.setName("H2");
+    public Student getStudent(Long studentId) {
+        Session session = DatabaseHibernateUtility.getSessionFactory().openSession();
+        session.beginTransaction();
+        Student student = session.byId(Student.class).load(studentId);
+        session.getTransaction().commit();
         return student;
     }
 
-    public Boolean saveStudent(int rollNumber, String name) {
-        Student student = new Student();
-        student.setRollNumber(rollNumber);
-        student.setName(name);
+    public Boolean saveStudent(Student student) {
         Session session = DatabaseHibernateUtility.getSessionFactory().openSession();
         session.beginTransaction();
-        Serializable savedId = session.save(rollNumber);
+        Serializable savedId = session.save(student);
         Long primaryKey = (Long) savedId;
         session.getTransaction().commit();
         if (primaryKey != null) {
@@ -31,5 +29,28 @@ public class StudentWithH2DAO implements StudentDAO {
         }
     }
 
+    public Boolean deleteStudent(Long studentNumber) {
+        Session session = DatabaseHibernateUtility.getSessionFactory().openSession();
+        session.beginTransaction();
+        Student studentFromDatabase = session.byId(Student.class).load((Long) studentNumber);
+        if (studentFromDatabase != null) {
+            session.delete(studentFromDatabase);
+            session.getTransaction().commit();
+            return true;
+        } else {
+            return false;
+        }
+    }
 
+    @Override
+    public void updateStudent(Student student) {
+        Session session = DatabaseHibernateUtility.getSessionFactory().openSession();
+        session.beginTransaction();
+        session.update(student);
+        session.getTransaction().commit();
+    }
 }
+
+
+
+
