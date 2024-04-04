@@ -63,6 +63,7 @@ public class CollectionExample {
 
     private static void checkDuplicateWithHastSet() {
         String inputSting = "My name is sahil and My hobby is playing and dancing ";
+
         String[] splitWords = inputSting.split(" ");
         Set<String> stringSet = new HashSet<>();
         System.out.println("Duplicate words are : ");
