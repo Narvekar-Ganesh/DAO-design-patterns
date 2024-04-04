@@ -43,9 +43,9 @@ public class StudentController {
     public static void main(String[] args) {
 //        updateGivenBook(27L,"viraj" );
 //        deleteGivenStudent(87L);
-//        saveMultipleStudents();
+        saveMultipleStudents();
 //        saveSingleStudent(999, "ASDFGH", "Mail", "flat no H-999", "Balaji Symphony", "111222111222", "3334443334443");
-        getStudentById(130L);
+//        getStudentById(130L);
     }
 
     private static void getStudentById(Long id){
@@ -78,9 +78,13 @@ public class StudentController {
         }
 
         for (Student eachStudent : students) {
+            System.out.println("Each student is : " + eachStudent);
+        }
+
+        /*for (Student eachStudent : students) {
             controller.registerStudent(eachStudent.getRollNumber(), eachStudent.getName(), eachStudent.getGender(), eachStudent.getAddresLine1(), eachStudent.getAddresLine2(),null,null);
 
-        }
+        }*/
     }
 
 }
