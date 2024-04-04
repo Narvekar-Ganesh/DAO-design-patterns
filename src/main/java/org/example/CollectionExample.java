@@ -26,7 +26,8 @@ public class CollectionExample {
 //        hashSetExample();
 //        System.out.println("---------------------------");
 //        hashSetExampleWithLibrary();
-        checkDuplicateWithHastSet();
+//        checkDuplicateWithHastSet();
+        checkOccurrenceOfPalyerOfMatchHashMap();
     }
 
     private static void hashMapExample() {
@@ -74,4 +75,45 @@ public class CollectionExample {
             }
         }
     }
+
+    public static void checkOccurrenceOfWordsUsingHashMap() {
+        String inputString = "Java is very difficult in programming language Java is mother of all programming language ";
+
+        String[] splitWords = inputString.split(" ");
+        Map<String, Integer> stringInteger = new HashMap<>();
+        for (String eachWord : splitWords) {
+            Integer value = stringInteger.get(eachWord);
+            if (value == null) {
+                stringInteger.put(eachWord, 1);
+            } else {
+                value += 1;
+                stringInteger.put(eachWord, value);
+            }
+        }
+        System.out.println("Occurrence of words " + stringInteger);
+    }
+
+    /**
+     * inputString = "Sachin , Sehwag , Steve , Kohli , Gibbs, Raza , Duplesis , Sharma , Sachin , Kohli , Sachin , Yuvraj";
+     * calculate number of MoM for each player
+     * End of the problem - print all MoM players
+     */
+
+    public static void checkOccurrenceOfPalyerOfMatchHashMap() {
+        String inputPlayer = "Sachin Rohit Kohali Rahul Sachin Kohali Rahul Rohit Devid";
+
+        String[] splitPlayers = inputPlayer.split(" ");
+        Map<String, Integer> playerToManOfMatch = new HashMap<>();
+        for (String eachPlayer : splitPlayers) {
+            Integer value = playerToManOfMatch.get(eachPlayer);
+            if (value == null) {
+                playerToManOfMatch.put(eachPlayer, 1);
+            } else {
+                value += 1;
+                playerToManOfMatch.put(eachPlayer, value);
+            }
+        }
+        System.out.println(" Occurrence of Player of the Match" +playerToManOfMatch);
+    }
+
 }
