@@ -2,10 +2,7 @@ package org.example;
 
 import home.pratice.domain.LibraryCard;
 
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 
 public class CollectionExample {
     public static void main(String[] args) {
@@ -27,7 +24,8 @@ public class CollectionExample {
 //        System.out.println("---------------------------");
 //        hashSetExampleWithLibrary();
 //        checkDuplicateWithHastSet();
-        checkOccurrenceOfPalyerOfMatchHashMap();
+//        checkOccurrenceOfPalyerOfMatchHashMap();
+        amountCalculateWithHashMap();
     }
 
     private static void hashMapExample() {
@@ -113,7 +111,25 @@ public class CollectionExample {
                 playerToManOfMatch.put(eachPlayer, value);
             }
         }
-        System.out.println(" Occurrence of Player of the Match" +playerToManOfMatch);
+        System.out.println(" Occurrence of Player of the Match" + playerToManOfMatch);
     }
 
+
+    public static void amountCalculateWithHashMap() {
+        String inputName = ("Siddhu=200;Sahil=200;Vira=450;Manish=440;Siddhu=450;Sahil=880");
+        Map<String, Integer> studentNameToAmount = new HashMap<>();
+        String[] splitData = inputName.split(";");
+        for (String eachStudent : splitData) {
+            String[] arrayOfStudentDetails = eachStudent.split("=");
+            String studentName = arrayOfStudentDetails[0];
+            Integer amount = studentNameToAmount.get(studentName);
+            if (amount == null) {
+                studentNameToAmount.put(studentName, Integer.parseInt(arrayOfStudentDetails[1]));
+            } else {
+                amount += Integer.parseInt(arrayOfStudentDetails[1]);
+                studentNameToAmount.put(studentName, amount);
+            }
+        }
+        System.out.println("studentNameToAmount : " + studentNameToAmount);
+    }
 }
