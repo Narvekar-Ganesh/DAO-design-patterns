@@ -25,7 +25,9 @@ public class CollectionExample {
 //        hashSetExampleWithLibrary();
 //        checkDuplicateWithHastSet();
 //        checkOccurrenceOfPalyerOfMatchHashMap();
-        amountCalculateWithHashMap();
+//        amountCalculateWithHashMap();
+//        demonstrateComparatorExample();
+        demonstrateComparatorExampleForSixes();
     }
 
     private static void hashMapExample() {
@@ -132,4 +134,46 @@ public class CollectionExample {
         }
         System.out.println("studentNameToAmount : " + studentNameToAmount);
     }
+
+    public static void demonstrateComparatorExample(){
+        List<Batsman> batsmen = new ArrayList<>();
+        Batsman batsman = new Batsman("Sachin", 100);
+        batsmen.add(batsman);
+
+        batsman = new Batsman("Yuvraj" , 29);
+        batsmen.add(batsman);
+
+        batsman = new Batsman("Kohli" , 78);
+        batsmen.add(batsman);
+
+        System.out.println("before sorting : " + batsmen);
+
+//        batsmen.sort(new BatsmanComparator());
+        Collections.sort(batsmen);
+        System.out.println("after sorting : " + batsmen);
+
+    }
+    public static void demonstrateComparatorExampleForSixes(){
+        List<Batsman> batsmen = new ArrayList<>();
+        Batsman batsman = new Batsman();
+        batsman.setName("Sahin");
+        batsman.setNumberOfSixes(45);
+        batsmen.add(batsman);
+
+        batsman = new Batsman();
+        batsman.setName("Rohit");
+        batsman.setNumberOfSixes(86);
+        batsmen.add(batsman);
+
+        batsman = new Batsman();
+        batsman.setName("Virat");
+        batsman.setNumberOfSixes(98);
+        batsmen.add(batsman);
+
+        Collections.sort(batsmen ,new SixerComparator());
+        System.out.println("List of batsmen"+batsmen);
+    }
+
+
+
 }
