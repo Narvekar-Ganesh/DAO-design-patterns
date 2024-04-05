@@ -2,10 +2,7 @@ package org.example;
 
 import home.pratice.domain.LibraryCard;
 
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 
 public class CollectionExample {
     public static void main(String[] args) {
@@ -27,7 +24,12 @@ public class CollectionExample {
 //        System.out.println("---------------------------");
 //        hashSetExampleWithLibrary();
 //        checkDuplicateWithHastSet();
-        checkOccurrenceOfPalyerOfMatchHashMap();
+//        checkOccurrenceOfPalyerOfMatchHashMap();
+//        amountCalculateWithHashMap();
+//        demonstrateComparatorExample();
+//        demonstrateComparatorExampleForSixes();
+//        demonstrateComparatorExample();
+        demonstrateTreeMap();
     }
 
     private static void hashMapExample() {
@@ -113,7 +115,93 @@ public class CollectionExample {
                 playerToManOfMatch.put(eachPlayer, value);
             }
         }
-        System.out.println(" Occurrence of Player of the Match" +playerToManOfMatch);
+        System.out.println(" Occurrence of Player of the Match" + playerToManOfMatch);
     }
 
+
+    public static void amountCalculateWithHashMap() {
+        String inputName = ("Siddhu=200;Sahil=200;Vira=450;Manish=440;Siddhu=450;Sahil=880");
+        Map<String, Integer> studentNameToAmount = new HashMap<>();
+        String[] splitData = inputName.split(";");
+        for (String eachStudent : splitData) {
+            String[] arrayOfStudentDetails = eachStudent.split("=");
+            String studentName = arrayOfStudentDetails[0];
+            Integer amount = studentNameToAmount.get(studentName);
+            if (amount == null) {
+                studentNameToAmount.put(studentName, Integer.parseInt(arrayOfStudentDetails[1]));
+            } else {
+                amount += Integer.parseInt(arrayOfStudentDetails[1]);
+                studentNameToAmount.put(studentName, amount);
+            }
+        }
+        System.out.println("studentNameToAmount : " + studentNameToAmount);
+    }
+
+    public static void demonstrateComparatorExample(){
+        List<Batsman> batsmen = new ArrayList<>();
+        Batsman batsman = new Batsman("Sachin", 100);
+        batsmen.add(batsman);
+
+        batsman = new Batsman("Yuvraj" , 29);
+        batsmen.add(batsman);
+
+        batsman = new Batsman("Kohli" , 78);
+        batsmen.add(batsman);
+
+        System.out.println("before sorting : " + batsmen);
+
+        batsmen.sort(new BatsmanComparator());
+//        Collections.sort(batsmen);
+        System.out.println("after sorting : " + batsmen);
+
+    }
+    public static void demonstrateComparatorExampleForSixes(){
+        List<Batsman> batsmen = new ArrayList<>();
+        Batsman batsman = new Batsman();
+        batsman.setName("Sahin");
+        batsman.setNumberOfSixes(45);
+        batsmen.add(batsman);
+
+        batsman = new Batsman();
+        batsman.setName("Rohit");
+        batsman.setNumberOfSixes(86);
+        batsmen.add(batsman);
+
+        batsman = new Batsman();
+        batsman.setName("Virat");
+        batsman.setNumberOfSixes(98);
+        batsmen.add(batsman);
+
+        Collections.sort(batsmen ,new SixerComparator());
+        System.out.println("List of batsmen"+batsmen);
+    }
+
+
+    private static void demonstrateTreeMap(){
+        Map<Batsman , String> batsmanToLeagueMatch = new TreeMap<>();
+//        Comparator<Batsman> batsmanComparator = new SixerComparator();
+//        Map<Batsman , String> batsmanToLeagueMatch = new TreeMap<>(batsmanComparator);
+
+        Batsman batsman = new Batsman();
+        batsman.setName("Sahin");
+        batsman.setNumberOfSixes(45);
+        batsmanToLeagueMatch.put(batsman , "IPL3");
+
+        batsman = new Batsman();
+        batsman.setName("Rohit");
+        batsman.setNumberOfSixes(60);
+        batsmanToLeagueMatch.put(batsman , "IPL3");
+
+        batsman = new Batsman();
+        batsman.setName("Virat");
+        batsman.setNumberOfSixes(52);
+        batsmanToLeagueMatch.put(batsman , "IPL3");
+
+        batsman = new Batsman();
+        batsman.setName("Rahane");
+        batsman.setNumberOfSixes(24);
+        batsmanToLeagueMatch.put(batsman , "IPL3");
+
+        System.out.println("Sorted batsmen : " + batsmanToLeagueMatch);
+    }
 }

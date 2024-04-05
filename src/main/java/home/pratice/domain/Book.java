@@ -1,15 +1,23 @@
 package home.pratice.domain;
 
-import javax.persistence.*;
+import lombok.*;
 
+import javax.persistence.*;
+import java.util.Objects;
+
+@NoArgsConstructor
+@ToString
+@Getter
+@Setter
+@Data
 @Entity
 @NamedQueries({
         @NamedQuery(name = "getBooksByAuthorName",
-                    query = "FROM Book book " +
-                            "WHERE book.autherName = :autherName"),
-        @NamedQuery(name="getBooksByBookName",
-                    query = "FROM Book book " +
-                "WHERE book.bookName = :bookName")
+                query = "FROM Book book " +
+                        "WHERE book.autherName = :autherName"),
+        @NamedQuery(name = "getBooksByBookName",
+                query = "FROM Book book " +
+                        "WHERE book.bookName = :bookName")
 
 })
 public class Book {
@@ -22,71 +30,26 @@ public class Book {
 
     @Column
     private String bookName;
+
     @Column
     private String autherName;
+
     @Column
     private String isbnNumber;
+
     @Column
     private Integer price;
 
-
-    public String getAutherName() {
-        return autherName;
-    }
-
-    public void setAutherName(String autherName) {
-        this.autherName = autherName;
-    }
-
-    public String getIsbnNumber() {
-        return isbnNumber;
-    }
-
-    public void setIsbnNumber(String isbnNumber) {
-        this.isbnNumber = isbnNumber;
-    }
-
-    public Integer getPrice() {
-        return price;
-    }
-
-    public void setPrice(Integer price) {
-        this.price = price;
-    }
-
-    public int getBookNumber() {
-        return bookNumber;
-    }
-
-    public Long getBookId() {
-        return bookId;
-    }
-
-    public void setBookId(Long bookId) {
-        this.bookId = bookId;
-    }
-
-    public String getBookName() {
-        return bookName;
-    }
-
-    public void setBookName(String bookName) {
-        this.bookName = bookName;
-    }
-
-    public void setBookNumber(int bookNumber) {
-        this.bookNumber = bookNumber;
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Book book = (Book) o;
+        return bookNumber == book.bookNumber && Objects.equals(bookName, book.bookName) && Objects.equals(autherName, book.autherName) && Objects.equals(isbnNumber, book.isbnNumber) && Objects.equals(price, book.price);
     }
 
     @Override
-    public String toString() {
-        return "Book{" +
-                "bookId=" + bookId +
-                ", bookNumber=" + bookNumber +
-                ", bookName='" + bookName + '\'' +
-                ", autherName='" + autherName + '\'' +
-                ", isbnNumber=" + isbnNumber +
-                ", price=" + price +
-                '}';
+    public int hashCode() {
+        return Objects.hash(bookNumber, bookName, autherName, isbnNumber, price);
     }
 }
