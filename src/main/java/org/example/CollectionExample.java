@@ -27,7 +27,8 @@ public class CollectionExample {
 //        checkOccurrenceOfPalyerOfMatchHashMap();
 //        amountCalculateWithHashMap();
 //        demonstrateComparatorExample();
-        demonstrateComparatorExampleForSixes();
+//        demonstrateComparatorExampleForSixes();
+        demonstrateComparatorExample();
     }
 
     private static void hashMapExample() {
@@ -148,7 +149,7 @@ public class CollectionExample {
 
         System.out.println("before sorting : " + batsmen);
 
-//        batsmen.sort(new BatsmanComparator());
+        batsmen.sort(new BatsmanComparator());
         Collections.sort(batsmen);
         System.out.println("after sorting : " + batsmen);
 
