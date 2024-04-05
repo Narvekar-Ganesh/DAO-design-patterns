@@ -9,7 +9,9 @@ import lombok.*;
 @Setter
 @Data
 public class Employee {
+
     private int employeeNumber ;
+
     private String  employeeName;
 
 }

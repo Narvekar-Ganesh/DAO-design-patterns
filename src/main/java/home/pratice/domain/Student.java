@@ -5,13 +5,11 @@ import lombok.*;
 import javax.persistence.*;
 import java.util.List;
 
-@AllArgsConstructor
 @NoArgsConstructor
 @ToString
 @Getter
 @Setter
 @Data
-
 @Entity
 public class Student {
     @Id
@@ -37,58 +35,8 @@ public class Student {
 
     @OneToOne(cascade = CascadeType.ALL)
     private Book book;
-
-
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<MobileNumber> mobileNumbers;
-
-    public Book getBook() {
-        return book;
-    }
-
-    public void setBook(Book book) {
-        this.book = book;
-    }
-
-    public LibraryCard getLibraryCard() {
-        return libraryCard;
-    }
-
-    public void setLibraryCard(LibraryCard libraryCard) {
-        this.libraryCard = libraryCard;
-    }
-
-    public Long getStudentId() {
-        return studentId;
-    }
-
-    public void setStudentId(Long studentId) {
-        this.studentId = studentId;
-    }
-
-    public int getRollNumber() {
-        return rollNumber;
-    }
-
-    public void setRollNumber(int rollNumber) {
-        this.rollNumber = rollNumber;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public List<MobileNumber> getMobileNumbers() {
-        return mobileNumbers;
-    }
-
-    public void setMobileNumbers(List<MobileNumber> mobileNumbers) {
-        this.mobileNumbers = mobileNumbers;
-    }
 
     public static void main(String[] args) {
         String prefix = "Mr.";

@@ -4,7 +4,6 @@ import lombok.*;
 
 import javax.persistence.*;
 
-@AllArgsConstructor
 @NoArgsConstructor
 @ToString
 @Getter
@@ -30,10 +29,13 @@ public class Book {
 
     @Column
     private String bookName;
+
     @Column
     private String autherName;
+
     @Column
     private String isbnNumber;
+
     @Column
     private Integer price;
 }
