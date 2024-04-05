@@ -3,6 +3,7 @@ package home.pratice.domain;
 import lombok.*;
 
 import javax.persistence.*;
+import java.util.Objects;
 
 @NoArgsConstructor
 @ToString
@@ -38,4 +39,17 @@ public class Book {
 
     @Column
     private Integer price;
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Book book = (Book) o;
+        return bookNumber == book.bookNumber && Objects.equals(bookName, book.bookName) && Objects.equals(autherName, book.autherName) && Objects.equals(isbnNumber, book.isbnNumber) && Objects.equals(price, book.price);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(bookNumber, bookName, autherName, isbnNumber, price);
+    }
 }

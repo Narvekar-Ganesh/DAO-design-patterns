@@ -28,7 +28,8 @@ public class CollectionExample {
 //        amountCalculateWithHashMap();
 //        demonstrateComparatorExample();
 //        demonstrateComparatorExampleForSixes();
-        demonstrateComparatorExample();
+//        demonstrateComparatorExample();
+        demonstrateTreeMap();
     }
 
     private static void hashMapExample() {
@@ -150,7 +151,7 @@ public class CollectionExample {
         System.out.println("before sorting : " + batsmen);
 
         batsmen.sort(new BatsmanComparator());
-        Collections.sort(batsmen);
+//        Collections.sort(batsmen);
         System.out.println("after sorting : " + batsmen);
 
     }
@@ -176,5 +177,31 @@ public class CollectionExample {
     }
 
 
+    private static void demonstrateTreeMap(){
+        Map<Batsman , String> batsmanToLeagueMatch = new TreeMap<>();
+//        Comparator<Batsman> batsmanComparator = new SixerComparator();
+//        Map<Batsman , String> batsmanToLeagueMatch = new TreeMap<>(batsmanComparator);
 
+        Batsman batsman = new Batsman();
+        batsman.setName("Sahin");
+        batsman.setNumberOfSixes(45);
+        batsmanToLeagueMatch.put(batsman , "IPL3");
+
+        batsman = new Batsman();
+        batsman.setName("Rohit");
+        batsman.setNumberOfSixes(60);
+        batsmanToLeagueMatch.put(batsman , "IPL3");
+
+        batsman = new Batsman();
+        batsman.setName("Virat");
+        batsman.setNumberOfSixes(52);
+        batsmanToLeagueMatch.put(batsman , "IPL3");
+
+        batsman = new Batsman();
+        batsman.setName("Rahane");
+        batsman.setNumberOfSixes(24);
+        batsmanToLeagueMatch.put(batsman , "IPL3");
+
+        System.out.println("Sorted batsmen : " + batsmanToLeagueMatch);
+    }
 }

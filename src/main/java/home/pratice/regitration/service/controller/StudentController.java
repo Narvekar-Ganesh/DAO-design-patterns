@@ -43,8 +43,8 @@ public class StudentController {
     public static void main(String[] args) {
 //        updateGivenBook(27L,"viraj" );
 //        deleteGivenStudent(87L);
-        saveMultipleStudents();
-//        saveSingleStudent(999, "ASDFGH", "Mail", "flat no H-999", "Balaji Symphony", "111222111222", "3334443334443");
+//        saveMultipleStudents();
+        saveSingleStudent(999, "ASDFGH", "Mail", "flat no H-999", "Balaji Symphony", "111222111222", "3334443334443");
 //        getStudentById(130L);
     }
 

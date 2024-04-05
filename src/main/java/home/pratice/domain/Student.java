@@ -5,11 +5,13 @@ import lombok.*;
 import javax.persistence.*;
 import java.util.List;
 
+@AllArgsConstructor
 @NoArgsConstructor
 @ToString
 @Getter
 @Setter
 @Data
+
 @Entity
 public class Student {
     @Id
@@ -35,9 +37,8 @@ public class Student {
 
     @OneToOne(cascade = CascadeType.ALL)
     private Book book;
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<MobileNumber> mobileNumbers;
-
     public static void main(String[] args) {
         String prefix = "Mr.";
         String firstName = "Swapnil";

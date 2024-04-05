@@ -3,8 +3,11 @@ package home.pratice.regitration.service.controller;
 import home.pratice.domain.Book;
 import home.pratice.service.BookRegistrationService;
 
+import java.net.CookieHandler;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class BookController {
     private BookRegistrationService bookRegistrationService;
@@ -44,24 +47,26 @@ public class BookController {
 //        doBookRegistration();
 //        deleteGivenBook();
 //        updateGivenBook(54L, "Sahil");
-        getBookByAuthorName();
+//        getBookByAuthorName();
 //        getBooksByBookName();
+        removeDuplicateBooksByAuthorName();
 
     }
 
     private static void getBookByAuthorName() {
         BookController bookController = new BookController();
-        String bookName = "SHA";
+        String bookName = "ABC";
         bookController.getBookByAuthorName("bookName");
         List<Book> books = bookController.getBookByAuthorName(bookName);
         for (Book book : books) {
             System.out.println("Each Auther's details are" + book);
         }
         if (books.isEmpty()) {
-            System.out.println("Auther not found in databas");
+            System.out.println("Auther not found in database");
         } else {
             System.out.println(books.size() + " Auther found in database for Book" + bookName);
         }
+
     }
 
     private static void getBooksByBookName() {
@@ -106,5 +111,22 @@ public class BookController {
             String response = controller.registerBook(bookToBeRegistered.getBookNumber(), bookToBeRegistered.getBookName(), bookToBeRegistered.getAutherName(), bookToBeRegistered.getIsbnNumber());
             System.out.println(response);
         }
+    }
+
+    private static  void removeDuplicateBooksByAuthorName(){
+        String author = "ABC";
+        BookController bookController = new BookController();
+        List<Book> books = bookController.getBookByAuthorName(author);
+
+        Set<Book> bookHashSet = new HashSet<>();
+        for (Book book:books){
+            boolean result = bookHashSet.add(book);
+            System.out.println(result);
+            if (result == false){
+                 String duplicateElement=bookController.deleteBook(book.getBookId());
+                System.out.println("Duplicate Elements are :"+duplicateElement);
+            }
+        }
+
     }
 }
