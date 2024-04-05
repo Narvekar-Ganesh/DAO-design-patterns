@@ -1,6 +1,15 @@
 package home.pratice.domain;
 
+import lombok.*;
+
 import javax.persistence.*;
+
+@AllArgsConstructor
+@NoArgsConstructor
+@ToString
+@Getter
+@Setter
+@Data
 
 @Entity
 public class User {
@@ -10,7 +19,6 @@ public class User {
 
     @Column
     private int userId;
-
 
 
     private String userName;
