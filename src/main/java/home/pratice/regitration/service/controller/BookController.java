@@ -2,8 +2,8 @@ package home.pratice.regitration.service.controller;
 
 import home.pratice.domain.Book;
 import home.pratice.service.BookRegistrationService;
+import home.pratice.utillities.BookNumberComparator;
 
-import java.net.CookieHandler;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -43,14 +43,18 @@ public class BookController {
 
     }
 
+    public List<Book> getAllBook() {
+        return bookRegistrationService.getAllBooks();
+    }
+
     public static void main(String[] args) {
 //        doBookRegistration();
 //        deleteGivenBook();
 //        updateGivenBook(54L, "Sahil");
 //        getBookByAuthorName();
 //        getBooksByBookName();
-        removeDuplicateBooksByAuthorName();
-
+//        sortBookByBookNumberInAscendingOrder();
+        getAllBooks();
     }
 
     private static void getBookByAuthorName() {
@@ -84,6 +88,15 @@ public class BookController {
         }
     }
 
+    private static void getAllBooks() {
+        BookController bookController = new BookController();
+        List<Book> books = bookController.getAllBook();
+
+        for (Book book : books) {
+            System.out.println("All Books are - " + book);
+        }
+    }
+
 
     private static void updateGivenBook(Long bookId, String bookName) {
         BookController controller = new BookController();
@@ -113,20 +126,29 @@ public class BookController {
         }
     }
 
-    private static  void removeDuplicateBooksByAuthorName(){
+    private static void removeDuplicateBooksByAuthorName() {
         String author = "ABC";
         BookController bookController = new BookController();
         List<Book> books = bookController.getBookByAuthorName(author);
 
         Set<Book> bookHashSet = new HashSet<>();
-        for (Book book:books){
+        for (Book book : books) {
             boolean result = bookHashSet.add(book);
             System.out.println(result);
-            if (result == false){
-                 String duplicateElement=bookController.deleteBook(book.getBookId());
-                System.out.println("Duplicate Elements are :"+duplicateElement);
+            if (result == false) {
+                String duplicateElement = bookController.deleteBook(book.getBookId());
+                System.out.println("Duplicate Elements are :" + duplicateElement);
             }
         }
+    }
+
+    private static void sortBookByBookNumberInAscendingOrder() {
+        BookController bookController = new BookController();
+        List<Book> books = bookController.getBookByAuthorName("ABC");
+        BookNumberComparator bookNumberComarator = new BookNumberComparator();
+        books.sort(bookNumberComarator);
+
+        System.out.println("Sort Books By book name" + books);
 
     }
 }

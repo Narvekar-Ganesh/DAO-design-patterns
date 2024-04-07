@@ -19,7 +19,7 @@ public class BookWithH2DAO implements BookDAO {
     }
 
     @Override
-    public Boolean saveBook(int bookId, String bookName,String autherName, String  isbnNumber) {
+    public Boolean saveBook(int bookId, String bookName, String autherName, String isbnNumber) {
         Book book = new Book();
         book.setBookNumber(bookId);
         book.setBookName(bookName);
@@ -57,22 +57,30 @@ public class BookWithH2DAO implements BookDAO {
         session.getTransaction().commit();
     }
 
-    public List<Book> getBookByBookName(String bookName){
+    public List<Book> getBookByBookName(String bookName) {
         Session session = DatabaseHibernateUtility.getSessionFactory().openSession();
-        Query query =  session.createNamedQuery("getBooksByBookName", Book.class);
-        query.setParameter("bookName",bookName);
+        Query query = session.createNamedQuery("getBooksByBookName", Book.class);
+        query.setParameter("bookName", bookName);
         List resultList = query.getResultList();
         List<Book> books = (List<Book>) resultList;
         return books;
     }
 
-    public List<Book> getBookByAuthorName(String authorName){
+    public List<Book> getBookByAuthorName(String authorName) {
         Session session = DatabaseHibernateUtility.getSessionFactory().openSession();
-        Query query =  session.createNamedQuery("getBooksByAuthorName", Book.class);
-        query.setParameter("autherName",authorName);
+        Query query = session.createNamedQuery("getBooksByAuthorName", Book.class);
+        query.setParameter("autherName", authorName);
         List resultList = query.getResultList();
         List<Book> books = (List<Book>) resultList;
         System.out.println("books from database using named query : " + books);
+        return books;
+    }
+
+    public List<Book> getAllBooks() {
+        Session session = DatabaseHibernateUtility.getSessionFactory().openSession();
+        Query query = session.createNamedQuery("getAllBooks", Book.class);
+        List resultList = query.getResultList();
+        List<Book> books = (List<Book>) resultList;
         return books;
     }
 }
