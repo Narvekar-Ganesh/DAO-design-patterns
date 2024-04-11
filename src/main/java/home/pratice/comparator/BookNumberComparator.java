@@ -1,4 +1,4 @@
-package home.pratice.utillities;
+package home.pratice.comparator;
 
 import home.pratice.domain.Book;
 

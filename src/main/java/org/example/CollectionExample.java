@@ -2,8 +2,8 @@ package org.example;
 
 import home.pratice.domain.Batsman;
 import home.pratice.domain.LibraryCard;
-import home.pratice.utillities.BatsmanComparator;
-import home.pratice.utillities.SixerComparator;
+import home.pratice.comparator.BatsmanComparator;
+import home.pratice.comparator.SixerComparator;
 
 import java.util.*;
 

@@ -2,7 +2,7 @@ package home.pratice.regitration.service.controller;
 
 import home.pratice.domain.Book;
 import home.pratice.service.BookRegistrationService;
-import home.pratice.utillities.BookNumberComparator;
+import home.pratice.comparator.BookNumberComparator;
 
 import java.util.ArrayList;
 import java.util.HashSet;
