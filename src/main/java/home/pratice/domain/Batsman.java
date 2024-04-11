@@ -1,4 +1,4 @@
-package org.example;
+package home.pratice.domain;
 
 import lombok.*;
 
