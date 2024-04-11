@@ -83,4 +83,37 @@ public class BookWithH2DAO implements BookDAO {
         List<Book> books = (List<Book>) resultList;
         return books;
     }
+
+    public void updateEachBookWithPrice(Book book) {
+        Session session = DatabaseHibernateUtility.getSessionFactory().openSession();
+        session.beginTransaction();
+//        Query query = session.createName9+dQuery("updateGivenBookWithDefaultPrice", Book.class);
+        Query query = session.createQuery("update Book book " +
+                "set book.price=0.  0 " +
+                "Where book.bookId = :bookId");
+        query.setParameter("bookId", book.getBookId());
+        query.executeUpdate();
+
+        session.getTransaction().commit();
+    }
+
+    @Override
+    public Book  updateBookAutherNameWithBookName(String bookName, String AutherName) {
+        String message = null;
+        Session session=DatabaseHibernateUtility.getSessionFactory().openSession();
+        session.beginTransaction();
+        Query query = session.createNamedQuery("update Book book"+
+                "set book.autherName=Krishna" +
+                "Where book.bookName=:bookName");
+        int result =query.executeUpdate();
+        if (result>0){
+            message =  result + " books are updated";
+        } else {
+            message= "Books are not updated";
+        }
+        session.getTransaction().commit();
+        return null;//TODO
+    }
 }
+
+

@@ -65,4 +65,19 @@ public class BookRegistrationService {
     public List<Book> getAllBooks() {
         return bookDAO.getAllBooks();
     }
+
+    public void updateAllBooksWithDefaultPrice() {
+        List<Book> books = bookDAO.getAllBooks();
+        for (Book book : books) {
+            System.out.println("Each book : " + book);
+            bookDAO.updateEachBookWithPrice(book);
+        }
+    }
+
+
+    public Book  updateBookAutherNameWithBookName(String bookName,String AutherName){
+        Book bookToBeupdate = bookDAO.updateBookAutherNameWithBookName( bookName, AutherName);
+      return  bookToBeupdate;
+
+    }
 }

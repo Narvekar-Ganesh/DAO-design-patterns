@@ -19,4 +19,8 @@ public interface BookDAO {
     List<Book> getBookByBookName(String bookName);
 
     List<Book> getAllBooks();
+
+    void updateEachBookWithPrice(Book book);
+
+    Book updateBookAutherNameWithBookName(String bookName,String AutherName);
 }

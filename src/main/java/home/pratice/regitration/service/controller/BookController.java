@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.Set;
 
 public class BookController {
-    private BookRegistrationService bookRegistrationService;
+    private BookRegistrationService     bookRegistrationService;
 
     public BookController() {
         bookRegistrationService = new BookRegistrationService();
@@ -47,14 +47,26 @@ public class BookController {
         return bookRegistrationService.getAllBooks();
     }
 
+    public void updateAllBooksWithDefaultPriceAsZero(){
+        bookRegistrationService.updateAllBooksWithDefaultPrice();
+    }
+
+    public void  updateBookAutherNameWithBookName(String bookName,String autherName){
+        bookRegistrationService.updateAllBooksWithDefaultPrice();
+    }
+
+//    public void updateAllBooksWithDefoultPrice(){
+////        return boo;
+//    }
+
     public static void main(String[] args) {
 //        doBookRegistration();
 //        deleteGivenBook();
 //        updateGivenBook(54L, "Sahil");
 //        getBookByAuthorName();
-//        getBooksByBookName();
+        getBooksByBookName();
 //        sortBookByBookNumberInAscendingOrder();
-        getAllBooks();
+        updateAllBooksWithDefaultPrice();
     }
 
     private static void getBookByAuthorName() {
@@ -97,10 +109,22 @@ public class BookController {
         }
     }
 
+    private static void updateAllBooksWithDefaultPrice(){
+        BookController controller =new BookController();
+        controller.updateAllBooksWithDefaultPriceAsZero();
+    }
+
 
     private static void updateGivenBook(Long bookId, String bookName) {
         BookController controller = new BookController();
         controller.updateBook(bookId, bookName);
+    }
+
+    private static void updateBookAutherNameWithBookName(){
+        String bookName = "Book-Name-310";
+        String autherName ="Krishna";
+        BookController controller =new BookController();
+        controller.updateBookAutherNameWithBookName(bookName,autherName);
     }
 
     private static void deleteGivenBook() {
