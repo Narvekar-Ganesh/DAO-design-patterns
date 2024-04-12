@@ -2,15 +2,15 @@ package home.pratice.regitration.service.controller;
 
 import home.pratice.domain.Book;
 import home.pratice.service.BookRegistrationService;
+import home.pratice.comparator.BookNumberComparator;
 
-import java.net.CookieHandler;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
 public class BookController {
-    private BookRegistrationService bookRegistrationService;
+    private BookRegistrationService     bookRegistrationService;
 
     public BookController() {
         bookRegistrationService = new BookRegistrationService();
@@ -43,14 +43,30 @@ public class BookController {
 
     }
 
+    public List<Book> getAllBook() {
+        return bookRegistrationService.getAllBooks();
+    }
+
+    public void updateAllBooksWithDefaultPriceAsZero(){
+        bookRegistrationService.updateAllBooksWithDefaultPrice();
+    }
+
+    public void  updateBookAutherNameWithBookName(String bookName,String autherName){
+        bookRegistrationService.updateAllBooksWithDefaultPrice();
+    }
+
+//    public void updateAllBooksWithDefoultPrice(){
+////        return boo;
+//    }
+
     public static void main(String[] args) {
 //        doBookRegistration();
 //        deleteGivenBook();
 //        updateGivenBook(54L, "Sahil");
 //        getBookByAuthorName();
-//        getBooksByBookName();
-        removeDuplicateBooksByAuthorName();
-
+        getBooksByBookName();
+//        sortBookByBookNumberInAscendingOrder();
+        updateAllBooksWithDefaultPrice();
     }
 
     private static void getBookByAuthorName() {
@@ -84,10 +100,31 @@ public class BookController {
         }
     }
 
+    private static void getAllBooks() {
+        BookController bookController = new BookController();
+        List<Book> books = bookController.getAllBook();
+
+        for (Book book : books) {
+            System.out.println("All Books are - " + book);
+        }
+    }
+
+    private static void updateAllBooksWithDefaultPrice(){
+        BookController controller =new BookController();
+        controller.updateAllBooksWithDefaultPriceAsZero();
+    }
+
 
     private static void updateGivenBook(Long bookId, String bookName) {
         BookController controller = new BookController();
         controller.updateBook(bookId, bookName);
+    }
+
+    private static void updateBookAutherNameWithBookName(){
+        String bookName = "Book-Name-310";
+        String autherName ="Krishna";
+        BookController controller =new BookController();
+        controller.updateBookAutherNameWithBookName(bookName,autherName);
     }
 
     private static void deleteGivenBook() {
@@ -113,20 +150,29 @@ public class BookController {
         }
     }
 
-    private static  void removeDuplicateBooksByAuthorName(){
+    private static void removeDuplicateBooksByAuthorName() {
         String author = "ABC";
         BookController bookController = new BookController();
         List<Book> books = bookController.getBookByAuthorName(author);
 
         Set<Book> bookHashSet = new HashSet<>();
-        for (Book book:books){
+        for (Book book : books) {
             boolean result = bookHashSet.add(book);
             System.out.println(result);
-            if (result == false){
-                 String duplicateElement=bookController.deleteBook(book.getBookId());
-                System.out.println("Duplicate Elements are :"+duplicateElement);
+            if (result == false) {
+                String duplicateElement = bookController.deleteBook(book.getBookId());
+                System.out.println("Duplicate Elements are :" + duplicateElement);
             }
         }
+    }
+
+    private static void sortBookByBookNumberInAscendingOrder() {
+        BookController bookController = new BookController();
+        List<Book> books = bookController.getBookByAuthorName("ABC");
+        BookNumberComparator bookNumberComarator = new BookNumberComparator();
+        books.sort(bookNumberComarator);
+
+        System.out.println("Sort Books By book name" + books);
 
     }
 }

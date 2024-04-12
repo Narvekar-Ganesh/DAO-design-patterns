@@ -1,4 +1,6 @@
-package org.example;
+package home.pratice.comparator;
+
+import home.pratice.domain.Batsman;
 
 import java.util.Comparator;
 

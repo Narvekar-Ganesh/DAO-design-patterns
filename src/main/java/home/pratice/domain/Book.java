@@ -17,8 +17,18 @@ import java.util.Objects;
                         "WHERE book.autherName = :autherName"),
         @NamedQuery(name = "getBooksByBookName",
                 query = "FROM Book book " +
-                        "WHERE book.bookName = :bookName")
-
+                        "WHERE book.bookName = :bookName"),
+        @NamedQuery(name = "getAllBooks",
+                query = "From Book book"),
+        @NamedQuery(name= "updateGivenBookWithDefaultPrice",
+                query = "update Book book " +
+                        "set book.price=0.0 " +
+                        "Where book.bookId = :bookId"),
+        @NamedQuery(name ="updateBookAutherNameWithBookName",
+                     query = "update Book book"+
+                             "set book.autherName=Krishna" +
+                             "Where book.bookName=:bookName"
+                            )
 })
 public class Book {
     @Id
@@ -53,3 +63,4 @@ public class Book {
         return Objects.hash(bookNumber, bookName, autherName, isbnNumber, price);
     }
 }
+

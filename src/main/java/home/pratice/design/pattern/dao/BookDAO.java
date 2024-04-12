@@ -7,7 +7,7 @@ import java.util.List;
 public interface BookDAO {
     Book getBook(Long bookId);
 
-    Boolean saveBook(int bookId, String bookName, String autherName, String  isbnNumber);
+    Boolean saveBook(int bookId, String bookName, String autherName, String isbnNumber);
 
     Boolean deleteBook(Long bookId);
 
@@ -16,5 +16,11 @@ public interface BookDAO {
     List<Book> getBookByAuthorName(String authorName);
 
 
-     List<Book> getBookByBookName(String bookName);
+    List<Book> getBookByBookName(String bookName);
+
+    List<Book> getAllBooks();
+
+    void updateEachBookWithPrice(Book book);
+
+    Book updateBookAutherNameWithBookName(String bookName,String AutherName);
 }
