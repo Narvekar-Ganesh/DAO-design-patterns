@@ -31,7 +31,7 @@ public class StudentRegistrationService {
 
         student.setBook(book);
         student.setLibraryCard(libraryCard);
-        student.setMobileNumbers(mobileNumbers);
+        student.setMobileNumbers((ArrayList<MobileNumber>) mobileNumbers);
 
         Boolean result = studentDAO.saveStudent(student);
         if (result) {

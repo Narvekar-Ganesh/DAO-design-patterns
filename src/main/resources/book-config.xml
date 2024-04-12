@@ -1,0 +1,24 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd">
+    <bean id="book" class="home.pratice.domain.Book">
+        <property name="bookNumber" value="159"></property>
+        <property name="bookName" value="Spring boot refernce"></property>
+        <property name="autherName" value="Dvan Syer"></property>
+        <property name="isbnNumber" value="765456"></property>
+    </bean >
+
+    <bean id="bookController" class ="home.pratice.regitration.service.controller.BookController">
+        <property name="bookRegistrationService" ref="bookRegistrationService"></property>
+    </bean>
+
+    <bean id ="bookRegistrationService" class="home.pratice.service.BookRegistrationService">
+        <property name="bookDAO" ref="bookDAO"></property>
+    </bean>
+
+    <bean id="bookDAO" class="home.pratice.dao.implimentation.BookWithH2DAO">
+    </bean>
+
+</beans>
+

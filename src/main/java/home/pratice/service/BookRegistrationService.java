@@ -3,16 +3,20 @@ package home.pratice.service;
 import home.pratice.dao.implimentation.BookWithH2DAO;
 import home.pratice.design.pattern.dao.BookDAO;
 import home.pratice.domain.Book;
+import lombok.Data;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import java.util.List;
 
-
+@NoArgsConstructor
+@Setter
+@Getter
+@Data
 public class BookRegistrationService {
     private BookDAO bookDAO;
 
-    public BookRegistrationService() {
-        bookDAO = new BookWithH2DAO();
-    }
 
     public Book getBook(Long bookId) {
         Book book = bookDAO.getBook(bookId);

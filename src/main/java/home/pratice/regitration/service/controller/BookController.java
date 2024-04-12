@@ -3,18 +3,28 @@ package home.pratice.regitration.service.controller;
 import home.pratice.domain.Book;
 import home.pratice.service.BookRegistrationService;
 import home.pratice.comparator.BookNumberComparator;
+import lombok.Data;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+
+@NoArgsConstructor
+@Setter
+@Getter
+@Data
+
+
 public class BookController {
     private BookRegistrationService     bookRegistrationService;
 
-    public BookController() {
-        bookRegistrationService = new BookRegistrationService();
-    }
 
     public Book getDetailsOfBook(Long bookId) {
         Book book = bookRegistrationService.getBook(bookId);
@@ -64,13 +74,14 @@ public class BookController {
 //        deleteGivenBook();
 //        updateGivenBook(54L, "Sahil");
 //        getBookByAuthorName();
-        getBooksByBookName();
+//        getAllBooks();
 //        sortBookByBookNumberInAscendingOrder();
         updateAllBooksWithDefaultPrice();
     }
 
     private static void getBookByAuthorName() {
-        BookController bookController = new BookController();
+        ApplicationContext applicationContext = new ClassPathXmlApplicationContext("classpath:book-config.xml");
+        BookController bookController = applicationContext.getBean("bookController", BookController.class);
         String bookName = "ABC";
         bookController.getBookByAuthorName("bookName");
         List<Book> books = bookController.getBookByAuthorName(bookName);
@@ -87,7 +98,8 @@ public class BookController {
 
     private static void getBooksByBookName() {
         String author = "Siddhu";
-        BookController bookController = new BookController();
+        ApplicationContext applicationContext = new ClassPathXmlApplicationContext("classpath:book-config.xml");
+        BookController bookController = applicationContext.getBean("bookController", BookController.class);
         List<Book> books = bookController.getBooksByBookName(author);
 
         for (Book book : books) {
@@ -101,39 +113,46 @@ public class BookController {
     }
 
     private static void getAllBooks() {
-        BookController bookController = new BookController();
+        ApplicationContext applicationContext = new ClassPathXmlApplicationContext("classpath:book-config.xml");
+        BookController bookController = applicationContext.getBean("bookController", BookController.class);
         List<Book> books = bookController.getAllBook();
 
         for (Book book : books) {
-            System.out.println("All Books are - " + book);
+            System.out.println("Each Book - " + book);
         }
     }
 
     private static void updateAllBooksWithDefaultPrice(){
-        BookController controller =new BookController();
-        controller.updateAllBooksWithDefaultPriceAsZero();
+
+        ApplicationContext applicationContext = new ClassPathXmlApplicationContext("classpath:book-config.xml");
+        BookController bookController = applicationContext.getBean("bookController", BookController.class);
+        bookController.updateAllBooksWithDefaultPriceAsZero();
     }
 
 
     private static void updateGivenBook(Long bookId, String bookName) {
-        BookController controller = new BookController();
-        controller.updateBook(bookId, bookName);
+        ApplicationContext applicationContext = new ClassPathXmlApplicationContext("classpath:book-config.xml");
+        BookController bookController = applicationContext.getBean("bookController", BookController.class);
+        bookController.updateBook(bookId, bookName);
     }
 
     private static void updateBookAutherNameWithBookName(){
         String bookName = "Book-Name-310";
         String autherName ="Krishna";
-        BookController controller =new BookController();
-        controller.updateBookAutherNameWithBookName(bookName,autherName);
+        ApplicationContext applicationContext = new ClassPathXmlApplicationContext("classpath:book-config.xml");
+        BookController bookController = applicationContext.getBean("bookController", BookController.class);
+        bookController.updateBookAutherNameWithBookName(bookName,autherName);
     }
 
     private static void deleteGivenBook() {
-        BookController controller = new BookController();
-        System.out.println(controller.deleteBook(114L));
+        ApplicationContext applicationContext = new ClassPathXmlApplicationContext("classpath:book-config.xml");
+        BookController bookController = applicationContext.getBean("bookController", BookController.class);
+        System.out.println(bookController.deleteBook(114L));
     }
 
     private static void doBookRegistration() {
-        BookController controller = new BookController();
+        ApplicationContext applicationContext = new ClassPathXmlApplicationContext("classpath:book-config.xml");
+        BookController bookController = applicationContext.getBean("bookController", BookController.class);
         List<Book> books = new ArrayList<>();
         Book book = null;
         for (int i = 0; i < 10; i++) {
@@ -145,14 +164,15 @@ public class BookController {
             books.add(book);
         }
         for (Book bookToBeRegistered : books) {
-            String response = controller.registerBook(bookToBeRegistered.getBookNumber(), bookToBeRegistered.getBookName(), bookToBeRegistered.getAutherName(), bookToBeRegistered.getIsbnNumber());
+            String response = bookController.registerBook(bookToBeRegistered.getBookNumber(), bookToBeRegistered.getBookName(), bookToBeRegistered.getAutherName(), bookToBeRegistered.getIsbnNumber());
             System.out.println(response);
         }
     }
 
     private static void removeDuplicateBooksByAuthorName() {
         String author = "ABC";
-        BookController bookController = new BookController();
+        ApplicationContext applicationContext = new ClassPathXmlApplicationContext("classpath:book-config.xml");
+        BookController bookController = applicationContext.getBean("bookController", BookController.class);
         List<Book> books = bookController.getBookByAuthorName(author);
 
         Set<Book> bookHashSet = new HashSet<>();
@@ -167,7 +187,8 @@ public class BookController {
     }
 
     private static void sortBookByBookNumberInAscendingOrder() {
-        BookController bookController = new BookController();
+        ApplicationContext applicationContext = new ClassPathXmlApplicationContext("classpath:book-config.xml");
+        BookController bookController = applicationContext.getBean("bookController", BookController.class);
         List<Book> books = bookController.getBookByAuthorName("ABC");
         BookNumberComparator bookNumberComarator = new BookNumberComparator();
         books.sort(bookNumberComarator);

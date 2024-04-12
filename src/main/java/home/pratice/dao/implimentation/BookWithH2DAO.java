@@ -3,11 +3,20 @@ package home.pratice.dao.implimentation;
 import home.pratice.design.pattern.dao.BookDAO;
 import home.pratice.domain.Book;
 import home.pratice.utillities.DatabaseHibernateUtility;
+import lombok.Data;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 import org.hibernate.Session;
 
 import javax.persistence.Query;
 import java.io.Serializable;
 import java.util.List;
+
+@NoArgsConstructor
+@Getter
+@Data
+@Setter
 
 public class BookWithH2DAO implements BookDAO {
     public Book getBook(Long bookId) {
@@ -89,7 +98,7 @@ public class BookWithH2DAO implements BookDAO {
         session.beginTransaction();
 //        Query query = session.createName9+dQuery("updateGivenBookWithDefaultPrice", Book.class);
         Query query = session.createQuery("update Book book " +
-                "set book.price=0.  0 " +
+                "set book.price= 45 " +
                 "Where book.bookId = :bookId");
         query.setParameter("bookId", book.getBookId());
         query.executeUpdate();
@@ -102,9 +111,10 @@ public class BookWithH2DAO implements BookDAO {
         String message = null;
         Session session=DatabaseHibernateUtility.getSessionFactory().openSession();
         session.beginTransaction();
-        Query query = session.createNamedQuery("update Book book"+
-                "set book.autherName=Krishna" +
+        Query query = session.createQuery("update Book book "+
+                "set book.autherName=Krishna " +
                 "Where book.bookName=:bookName");
+        query.setParameter("bookName" , bookName);
         int result =query.executeUpdate();
         if (result>0){
             message =  result + " books are updated";

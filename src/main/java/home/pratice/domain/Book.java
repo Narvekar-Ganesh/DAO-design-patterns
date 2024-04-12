@@ -3,6 +3,8 @@ package home.pratice.domain;
 import lombok.*;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 @NoArgsConstructor
@@ -25,8 +27,8 @@ import java.util.Objects;
                         "set book.price=0.0 " +
                         "Where book.bookId = :bookId"),
         @NamedQuery(name ="updateBookAutherNameWithBookName",
-                     query = "update Book book"+
-                             "set book.autherName=Krishna" +
+                     query = "update Book book " +
+                             "set book.autherName=Krishna " +
                              "Where book.bookName=:bookName"
                             )
 })
@@ -49,6 +51,9 @@ public class Book {
 
     @Column
     private Integer price;
+
+
+//    private List<Integer>prices = new ArrayList<>();
 
     @Override
     public boolean equals(Object o) {
