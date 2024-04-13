@@ -3,9 +3,16 @@ package home.pratice.dao.implimentation;
 import home.pratice.design.pattern.dao.StudentDAO;
 import home.pratice.domain.Student;
 import home.pratice.utillities.DatabaseHibernateUtility;
+import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 import org.hibernate.Session;
 
 import java.io.Serializable;
+
+@Setter
+@Getter
+@Data
 
 public class StudentWithH2DAO implements StudentDAO {
     public Student getStudent(Long studentId) {
@@ -46,11 +53,7 @@ public class StudentWithH2DAO implements StudentDAO {
     public void updateStudent(Student student) {
         Session session = DatabaseHibernateUtility.getSessionFactory().openSession();
         session.beginTransaction();
-        session.update(student);
+//        session.update(student);
         session.getTransaction().commit();
     }
 }
-
-
-
-

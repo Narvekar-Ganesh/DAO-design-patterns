@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-@NoArgsConstructor
+//@NoArgsConstructor
 @ToString
 @Getter
 @Setter
@@ -52,20 +52,23 @@ public class Book {
     @Column
     private Integer price;
 
+    public Book(){
+        System.out.println("I am in default constructor of Book");
+    }
 
 //    private List<Integer>prices = new ArrayList<>();
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Book book = (Book) o;
-        return bookNumber == book.bookNumber && Objects.equals(bookName, book.bookName) && Objects.equals(autherName, book.autherName) && Objects.equals(isbnNumber, book.isbnNumber) && Objects.equals(price, book.price);
-    }
+//    @Override
+//    public boolean equals(Object o) {
+//        if (this == o) return true;
+//        if (o == null || getClass() != o.getClass()) return false;
+//        Book book = (Book) o;
+//        return bookNumber == book.bookNumber && Objects.equals(bookName, book.bookName) && Objects.equals(autherName, book.autherName) && Objects.equals(isbnNumber, book.isbnNumber) && Objects.equals(price, book.price);
+//    }
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(bookNumber, bookName, autherName, isbnNumber, price);
-    }
+//    @Override
+//    public int hashCode() {
+//        return Objects.hash(bookNumber, bookName, autherName, isbnNumber, price);
+//    }
 }
 

@@ -3,13 +3,19 @@ package home.pratice.service;
 import home.pratice.dao.implimentation.LibraryCardWithH2DAO;
 import home.pratice.design.pattern.dao.LibraryCardDAO;
 import home.pratice.domain.LibraryCard;
+import lombok.Data;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
+
+@NoArgsConstructor
+@Data
+@Setter
+@Getter
 public class LibraryCardService {
     private LibraryCardDAO libraryCardDAO;
 
-    public LibraryCardService() {
-        libraryCardDAO = new LibraryCardWithH2DAO();
-    }
 
     public LibraryCard getLibraCard(Long cardId) {
         LibraryCard libraryCard = libraryCardDAO.getLibraryCard(cardId);

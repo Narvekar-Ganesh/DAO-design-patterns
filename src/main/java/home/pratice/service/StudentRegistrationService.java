@@ -6,17 +6,23 @@ import home.pratice.domain.Book;
 import home.pratice.domain.LibraryCard;
 import home.pratice.domain.MobileNumber;
 import home.pratice.domain.Student;
+import lombok.Data;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+@NoArgsConstructor
+@Data
+@Getter
+@Setter
+
 public class StudentRegistrationService {
     private StudentDAO studentDAO; //has-a relationship
 
-    public StudentRegistrationService() {
-        studentDAO = new StudentWithH2DAO(); //is-a relationship - Dependency-injection
-    }
 
     public Student getStudent(Long studentId) {
         Student student = studentDAO.getStudent(studentId);

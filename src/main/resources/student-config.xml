@@ -1,0 +1,32 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd">
+    <bean id="student" class="home.pratice.domain.Student">
+        <property name="rollNumber" value="21"></property>
+        <property name="name" value="Krish"></property>
+        <property name="gender" value="Male"></property>
+        <property name="addresLine1" value="Mathura Anath Ashram"></property>
+        <property name="addresLine2" value="Mathura"></property>
+    </bean>
+
+    <bean id="book" class="home.pratice.domain.Book" >
+        <property name="bookId" value="112233"/>
+        <property name="bookNumber" value="159"></property>
+        <property name="bookName" value="Spring boot refernce"></property>
+        <property name="autherName" value="Dvan Syer"></property>
+        <property name="isbnNumber" value="765456"></property>
+    </bean >
+    <bean id="studentController" class="home.pratice.regitration.service.controller.StudentController">
+        <property name="studentRegistrationService" ref="studentRegistrationService"/>
+    </bean>
+
+    <bean id="studentRegistrationService" class="home.pratice.service.StudentRegistrationService">
+        <property name="studentDAO" ref="studentDAO"/>
+    </bean>
+
+    <bean id="studentDAO" class="home.pratice.dao.implimentation.StudentWithH2DAO">
+
+    </bean>
+
+</beans>

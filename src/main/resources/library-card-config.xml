@@ -1,0 +1,16 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd">
+    <bean id="libraryCardController"  class="home.pratice.regitration.service.controller.LibraryCardController">
+        <property name="libraryCardService" ref="libraryCardService"/>
+    </bean>
+
+    <bean id="libraryCardService" class="home.pratice.service.LibraryCardService">
+        <property name="libraryCardDAO" ref="libraryCardDAO"/>
+    </bean>
+
+    <bean id="libraryCardDAO" class="home.pratice.dao.implimentation.LibraryCardWithH2DAO">
+    </bean>
+
+</beans>

@@ -2,16 +2,23 @@ package home.pratice.regitration.service.controller;
 
 import home.pratice.domain.LibraryCard;
 import home.pratice.service.LibraryCardService;
+import lombok.Data;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import java.util.ArrayList;
 import java.util.List;
 
+@NoArgsConstructor
+@Setter
+@Getter
+@Data
+
 public class LibraryCardController {
     private LibraryCardService libraryCardService;
-
-    public LibraryCardController() {
-        libraryCardService = new LibraryCardService();
-    }
 
     public LibraryCard getDetailsofLibraryCard(Long cardId) {
         LibraryCard libraryCard = libraryCardService.getLibraCard(cardId);
@@ -28,17 +35,20 @@ public class LibraryCardController {
     }
 
     public static void main(String[] args) {
-        deRegistration();
+//        deRegistration();
+        deleteLibraryCard();
     }
 
     public static void deleteLibraryCard() {
-        LibraryCardController controller = new LibraryCardController();
-        System.out.println(controller.deleteLibraryCard(44L));
+        ApplicationContext applicationContext = new ClassPathXmlApplicationContext("library-card-config.xml");
+        LibraryCardController libraryCardController = applicationContext.getBean("libraryCardController",LibraryCardController.class);
+        System.out.println(libraryCardController.deleteLibraryCard(44L));
     }
 
-
     private static void deRegistration() {
-        LibraryCardController controller = new LibraryCardController();
+
+        ApplicationContext applicationContext = new ClassPathXmlApplicationContext("library-card-config.xml");
+        LibraryCardController libraryCardController = applicationContext.getBean("libraryCardController",LibraryCardController.class);
         List<LibraryCard> libraryCards = new ArrayList<>();
         LibraryCard libraryCard = null;
         for (int i = 0; i < 10; i++) {
@@ -49,7 +59,7 @@ public class LibraryCardController {
         }
         for (LibraryCard libraryCardToBeRegister : libraryCards) {
 
-            String response = controller.registerLibraryCard(libraryCardToBeRegister.getCardNumber(), libraryCardToBeRegister.getCardName());
+            String response = libraryCardController.registerLibraryCard(libraryCardToBeRegister.getCardNumber(), libraryCardToBeRegister.getCardName());
             System.out.println(response);
         }
     }

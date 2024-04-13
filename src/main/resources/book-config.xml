@@ -2,7 +2,8 @@
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="http://www.springframework.org/schema/beans
        http://www.springframework.org/schema/beans/spring-beans.xsd">
-    <bean id="book" class="home.pratice.domain.Book">
+    <bean id="book" class="home.pratice.domain.Book" scope="prototype">
+        <property name="bookId" value="112233"/>
         <property name="bookNumber" value="159"></property>
         <property name="bookName" value="Spring boot refernce"></property>
         <property name="autherName" value="Dvan Syer"></property>
