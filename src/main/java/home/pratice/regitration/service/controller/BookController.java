@@ -20,8 +20,6 @@ import java.util.Set;
 @Setter
 @Getter
 @Data
-
-
 public class BookController {
     private BookRegistrationService     bookRegistrationService;
 

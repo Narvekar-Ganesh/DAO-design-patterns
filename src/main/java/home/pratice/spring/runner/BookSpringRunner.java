@@ -43,20 +43,28 @@ public class BookSpringRunner {
         System.out.println(book1.hashCode());
         System.out.println(book1.getBookNumber());
 ***/
-
+/***
 
         ApplicationContext applicationContext = new ClassPathXmlApplicationContext("book-config.xml");
         Book book =  applicationContext.getBean("book",Book.class);
-        System.out.println(book.hashCode());
-
-
-
 
         ApplicationContext applicationContext1 = new ClassPathXmlApplicationContext("book-config.xml");
         Book book1 = applicationContext1.getBean("book",Book.class);
         System.out.println(book1.hashCode());
+        ***/
+
+        ApplicationContext applicationContext2 = new ClassPathXmlApplicationContext("book-config.xml");
+        Book book2 =applicationContext2.getBean("book2",Book.class);
+        System.out.println(book2.hashCode());
+
+        ApplicationContext applicationContext3 = new ClassPathXmlApplicationContext("book-config.xml");
+        Book book3 = applicationContext3.getBean("book2",Book.class);
+        System.out.println( "Before set method " +book3.getBookName());
+        book3.setBookName("New name");
+//        System.out.println(book3);
+        System.out.println(book3.toString());
+        System.out.println( "After set method "  +book3.getBookName());
+        System.out.println(book3.hashCode());
     }
 }
 
-//ApplicationContext applicationContext = new ClassPathXmlApplicationContext("classpath:book-config.xml");
-//Book book = applicationContext.getBean("book", Book.class);

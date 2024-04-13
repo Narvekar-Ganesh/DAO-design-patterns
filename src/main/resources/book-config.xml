@@ -10,6 +10,15 @@
         <property name="isbnNumber" value="765456"></property>
     </bean >
 
+
+    <bean id="book2" class="home.pratice.domain.Book" scope="prototype">
+        <property name="bookId" value="112233"/>
+        <property name="bookNumber" value="159"></property>
+        <property name="bookName" value="Spring boot refernce"></property>
+        <property name="autherName" value="Dvan Syer"></property>
+        <property name="isbnNumber" value="765456"></property>
+    </bean >
+
     <bean id="bookController" class ="home.pratice.regitration.service.controller.BookController">
         <property name="bookRegistrationService" ref="bookRegistrationService"></property>
     </bean>
