@@ -25,6 +25,7 @@ public class StudentRegistrationService {
 
 
     public Student getStudent(Long studentId) {
+        System.out.println("getStudent() - studentDAO : " + studentDAO + " | studentId : " + studentId);
         Student student = studentDAO.getStudent(studentId);
         return student;
     }

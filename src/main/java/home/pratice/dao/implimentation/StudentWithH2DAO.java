@@ -12,8 +12,7 @@ import java.io.Serializable;
 
 @Setter
 @Getter
-@Data
-
+//@Data
 public class StudentWithH2DAO implements StudentDAO {
     public Student getStudent(Long studentId) {
         Session session = DatabaseHibernateUtility.getSessionFactory().openSession();

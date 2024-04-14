@@ -34,6 +34,7 @@ public class BookConfig {
      * <bean id="bookDAO" class="home.pratice.dao.implimentation.BookWithH2DAO">
      *  </bean>
      */
+    @Bean
     public BookWithH2DAO bookDAO(){
         BookWithH2DAO bookWithH2DAO = new BookWithH2DAO();
         return bookWithH2DAO;
@@ -59,7 +60,7 @@ public class BookConfig {
     @Bean
     public BookController bookController(){
         BookController bookController= new BookController();
-        bookController.setBookRegistrationService(bookRegistrationService());
+            bookController.setBookRegistrationService(bookRegistrationService());
         return bookController;
     }
 }
